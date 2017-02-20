@@ -14,6 +14,15 @@
 		78B830401E5B0A32005B9057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B8303E1E5B0A32005B9057 /* LaunchScreen.storyboard */; };
 		78B8304B1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8304A1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift */; };
 		78B830561E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830551E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift */; };
+		78B8306E1E5B0B07005B9057 /* NSAttributedString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */; };
+		78B8306F1E5B0B07005B9057 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830651E5B0B07005B9057 /* TextViewDelegate.swift */; };
+		78B830701E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */; };
+		78B830711E5B0B07005B9057 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */; };
+		78B830721E5B0B07005B9057 /* UITextView+ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */; };
+		78B830731E5B0B07005B9057 /* UITextView+IndentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */; };
+		78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */; };
+		78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */; };
+		78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +56,15 @@
 		78B830511E5B0A32005B9057 /* SHRichTextEditorToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHRichTextEditorToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B830551E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRichTextEditorToolsUITests.swift; sourceTree = "<group>"; };
 		78B830571E5B0A32005B9057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Helper.swift"; path = "Source/NSAttributedString+Helper.swift"; sourceTree = "<group>"; };
+		78B830651E5B0B07005B9057 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewDelegate.swift; path = Source/TextViewDelegate.swift; sourceTree = "<group>"; };
+		78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+SHRichTextEditorTools.swift"; path = "Source/UIBarButtonItem+SHRichTextEditorTools.swift"; sourceTree = "<group>"; };
+		78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+SymbolicTraits.swift"; path = "Source/UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
+		78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+ImageHelper.swift"; path = "Source/UITextView+ImageHelper.swift"; sourceTree = "<group>"; };
+		78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+IndentationHelper.swift"; path = "Source/UITextView+IndentationHelper.swift"; sourceTree = "<group>"; };
+		78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+LinkHelper.swift"; path = "Source/UITextView+LinkHelper.swift"; sourceTree = "<group>"; };
+		78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+SHRichTextEditorTools.swift"; path = "Source/UITextView+SHRichTextEditorTools.swift"; sourceTree = "<group>"; };
+		78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+TapHandler.swift"; path = "Source/UITextView+TapHandler.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,7 @@
 		78B830341E5B0A32005B9057 /* SHRichTextEditorTools */ = {
 			isa = PBXGroup;
 			children = (
+				78B830631E5B0ACF005B9057 /* Source */,
 				78B830351E5B0A32005B9057 /* AppDelegate.swift */,
 				78B830371E5B0A32005B9057 /* ViewController.swift */,
 				78B830391E5B0A32005B9057 /* Main.storyboard */,
@@ -123,6 +142,22 @@
 				78B830571E5B0A32005B9057 /* Info.plist */,
 			);
 			path = SHRichTextEditorToolsUITests;
+			sourceTree = "<group>";
+		};
+		78B830631E5B0ACF005B9057 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */,
+				78B830651E5B0B07005B9057 /* TextViewDelegate.swift */,
+				78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */,
+				78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */,
+				78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */,
+				78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */,
+				78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */,
+				78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */,
+				78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +297,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B8306F1E5B0B07005B9057 /* TextViewDelegate.swift in Sources */,
+				78B8306E1E5B0B07005B9057 /* NSAttributedString+Helper.swift in Sources */,
+				78B830701E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift in Sources */,
 				78B830381E5B0A32005B9057 /* ViewController.swift in Sources */,
+				78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */,
 				78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */,
+				78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */,
+				78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */,
+				78B830721E5B0B07005B9057 /* UITextView+ImageHelper.swift in Sources */,
+				78B830711E5B0B07005B9057 /* UIFont+SymbolicTraits.swift in Sources */,
+				78B830731E5B0B07005B9057 /* UITextView+IndentationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
