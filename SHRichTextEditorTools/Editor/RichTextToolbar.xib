@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="e2G-mT-DCr" customClass="RichTextToolbar" customModule="SHRichTextEditor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Indent" id="LP1-6O-kCV" userLabel="Bullet">
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="Enp-Wm-WoZ"/>
+                <barButtonItem title="Bold" id="qqC-gB-kIb" userLabel="Bold">
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="BOd-eq-hAe"/>
+                <barButtonItem title="Italic" id="zES-Dr-aEa" userLabel="Italic">
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="GaA-BF-9Uk"/>
+                <barButtonItem title="Link" id="drQ-az-taD" userLabel="Link">
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="Xab-1P-bkc"/>
+                <barButtonItem title="Image" id="XvL-fV-GUj" userLabel="Camera">
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </barButtonItem>
+            </items>
+            <color key="tintColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="boldButton" destination="qqC-gB-kIb" id="Kpi-w0-wjI"/>
+                <outlet property="bulletButton" destination="LP1-6O-kCV" id="hQT-fa-w1K"/>
+                <outlet property="cameraButton" destination="XvL-fV-GUj" id="PLD-7N-npD"/>
+                <outlet property="italicButton" destination="zES-Dr-aEa" id="usK-zd-REe"/>
+                <outlet property="linkButton" destination="drQ-az-taD" id="znW-t4-Vsa"/>
+            </connections>
+            <point key="canvasLocation" x="-262" y="-169"/>
+        </toolbar>
+    </objects>
+</document>

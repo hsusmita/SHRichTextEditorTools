@@ -1,8 +1,8 @@
 //
-//  EditorBarButtonItem.swift
-//  SHRichTextEditor
+//  UIBarButtonItem+SHRichTextEditorTools.swift
+//  SHRichTextEditorTools
 //
-//  Created by Susmita Horrow on 14/02/17.
+//  Created by Susmita Horrow on 20/02/17.
 //  Copyright © 2017 hsusmita. All rights reserved.
 //
 

@@ -23,6 +23,15 @@
 		78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */; };
 		78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */; };
 		78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */; };
+		78B830821E5B0C37005B9057 /* CameraInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830791E5B0C37005B9057 /* CameraInputView.swift */; };
+		78B830831E5B0C37005B9057 /* CameraInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307A1E5B0C37005B9057 /* CameraInputView.xib */; };
+		78B830841E5B0C37005B9057 /* ImageBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */; };
+		78B830851E5B0C37005B9057 /* ImageBorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */; };
+		78B830861E5B0C37005B9057 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */; };
+		78B830871E5B0C37005B9057 /* RichTextToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */; };
+		78B830881E5B0C37005B9057 /* RichTextToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */; };
+		78B830891E5B0C37005B9057 /* SHRichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */; };
+		78B8308A1E5B0C37005B9057 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +74,15 @@
 		78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+LinkHelper.swift"; path = "Source/UITextView+LinkHelper.swift"; sourceTree = "<group>"; };
 		78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+SHRichTextEditorTools.swift"; path = "Source/UITextView+SHRichTextEditorTools.swift"; sourceTree = "<group>"; };
 		78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+TapHandler.swift"; path = "Source/UITextView+TapHandler.swift"; sourceTree = "<group>"; };
+		78B830791E5B0C37005B9057 /* CameraInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraInputView.swift; path = Editor/CameraInputView.swift; sourceTree = "<group>"; };
+		78B8307A1E5B0C37005B9057 /* CameraInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraInputView.xib; path = Editor/CameraInputView.xib; sourceTree = "<group>"; };
+		78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBorderView.swift; path = Editor/ImageBorderView.swift; sourceTree = "<group>"; };
+		78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageBorderView.xib; path = Editor/ImageBorderView.xib; sourceTree = "<group>"; };
+		78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerManager.swift; path = Editor/ImagePickerManager.swift; sourceTree = "<group>"; };
+		78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichTextToolbar.swift; path = Editor/RichTextToolbar.swift; sourceTree = "<group>"; };
+		78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RichTextToolbar.xib; path = Editor/RichTextToolbar.xib; sourceTree = "<group>"; };
+		78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHRichTextEditor.swift; path = Editor/SHRichTextEditor.swift; sourceTree = "<group>"; };
+		78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Helper.swift"; path = "Editor/UIViewController+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +133,7 @@
 		78B830341E5B0A32005B9057 /* SHRichTextEditorTools */ = {
 			isa = PBXGroup;
 			children = (
+				78B830781E5B0C2E005B9057 /* Editor */,
 				78B830631E5B0ACF005B9057 /* Source */,
 				78B830351E5B0A32005B9057 /* AppDelegate.swift */,
 				78B830371E5B0A32005B9057 /* ViewController.swift */,
@@ -158,6 +177,22 @@
 				78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		78B830781E5B0C2E005B9057 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				78B830791E5B0C37005B9057 /* CameraInputView.swift */,
+				78B8307A1E5B0C37005B9057 /* CameraInputView.xib */,
+				78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */,
+				78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */,
+				78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */,
+				78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */,
+				78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */,
+				78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */,
+				78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */,
+			);
+			name = Editor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,7 +305,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B830831E5B0C37005B9057 /* CameraInputView.xib in Resources */,
 				78B830401E5B0A32005B9057 /* LaunchScreen.storyboard in Resources */,
+				78B830881E5B0C37005B9057 /* RichTextToolbar.xib in Resources */,
+				78B830851E5B0C37005B9057 /* ImageBorderView.xib in Resources */,
 				78B8303D1E5B0A32005B9057 /* Assets.xcassets in Resources */,
 				78B8303B1E5B0A32005B9057 /* Main.storyboard in Resources */,
 			);
@@ -297,16 +335,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B8308A1E5B0C37005B9057 /* UIViewController+Helper.swift in Sources */,
 				78B8306F1E5B0B07005B9057 /* TextViewDelegate.swift in Sources */,
 				78B8306E1E5B0B07005B9057 /* NSAttributedString+Helper.swift in Sources */,
 				78B830701E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift in Sources */,
 				78B830381E5B0A32005B9057 /* ViewController.swift in Sources */,
+				78B830821E5B0C37005B9057 /* CameraInputView.swift in Sources */,
 				78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */,
+				78B830841E5B0C37005B9057 /* ImageBorderView.swift in Sources */,
 				78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */,
+				78B830871E5B0C37005B9057 /* RichTextToolbar.swift in Sources */,
 				78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */,
+				78B830861E5B0C37005B9057 /* ImagePickerManager.swift in Sources */,
 				78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */,
 				78B830721E5B0B07005B9057 /* UITextView+ImageHelper.swift in Sources */,
 				78B830711E5B0B07005B9057 /* UIFont+SymbolicTraits.swift in Sources */,
+				78B830891E5B0C37005B9057 /* SHRichTextEditor.swift in Sources */,
 				78B830731E5B0B07005B9057 /* UITextView+IndentationHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

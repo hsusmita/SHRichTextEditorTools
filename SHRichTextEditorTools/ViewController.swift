@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+	
+	var textEditor: SHRichTextEditor?
+	@IBOutlet weak var textView: UITextView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		textEditor = SHRichTextEditor(textView: textView)
 	}
 
 	override func didReceiveMemoryWarning() {
