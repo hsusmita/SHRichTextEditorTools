@@ -9,20 +9,22 @@
 import Foundation
 import UIKit
 
-protocol LinkInputEnabled: class {
+public protocol LinkInputEnabled: class {
 	var linkAttributes: [String: Any] { get }
 	func showLinkInputView(completion: @escaping (URL?) -> ())
 }
 
-protocol LinkInsertProtocol: class {
+public protocol LinkInsertProtocol: class {
+	var linkInputViewProvider: LinkInputEnabled? { get }
 	func addLink(link: URL, for range: NSRange)
+	func removeLink(for range: NSRange)
 }
 
 private var linkInputViewProviderKey: UInt8 = 0
 
 extension UITextView: LinkInsertProtocol {
 	
-	var linkInputViewProvider: LinkInputEnabled? {
+	public var linkInputViewProvider: LinkInputEnabled? {
 		get {
 			return objc_getAssociatedObject(self, &linkInputViewProviderKey) as? LinkInputEnabled
 		}
@@ -32,7 +34,7 @@ extension UITextView: LinkInsertProtocol {
 		}
 	}
 	
-	func addLink(link: URL, for range: NSRange) {
+	public func addLink(link: URL, for range: NSRange) {
 		guard range.location + range.length < self.attributedText.length else {
 			return
 		}
@@ -42,7 +44,15 @@ extension UITextView: LinkInsertProtocol {
 		self.attributedText = mutableAttributedString
 	}
 	
-	func removeLink(from text: String) {
-		
+	public func removeLink(for range: NSRange) {
+		guard range.location + range.length < self.attributedText.length else {
+			return
+		}
+		let mutableAttributedString = NSMutableAttributedString(attributedString: self.attributedText)
+		mutableAttributedString.removeAttribute(NSLinkAttributeName, range: range)
+		for (key, _) in self.linkTextAttributes {
+			mutableAttributedString.removeAttribute(key, range: range)
+		}
+		self.attributedText = mutableAttributedString
 	}
 }

@@ -9,33 +9,34 @@
 import Foundation
 import UIKit
 
-protocol IndentationEnabled {
+public protocol IndentationEnabled {
 	var indentationString: String { get }
 	var indentationStringWithoutNewline: String { get }
 }
 
 extension IndentationEnabled {
-	var indentationString: String {
+	public var indentationString: String {
 		return "\n\t • "
 	}
 	
-	var indentationStringWithoutNewline: String {
+	public var indentationStringWithoutNewline: String {
 		return "\t • "
 	}
 }
 
-protocol IndentationProtocol {
+public protocol IndentationProtocol {
 	func addIndentation(at index: Int)
 	func removeIndentation(at index: Int)
 	func toggleIndentation(at index: Int)
 	func indentationRange(at index: Int) -> NSRange?
+	func indentationPresent(at index: Int) -> Bool
 }
 
 extension UITextView: IndentationEnabled {}
 
 extension UITextView: IndentationProtocol {
 	
-	func addIndentation(at index: Int) {
+	public func addIndentation(at index: Int) {
 		let attributedStringToAppend: NSMutableAttributedString = NSMutableAttributedString(string: indentationString)
 		let contentOffset = self.contentOffset
 		let selectedRange = selectedTextRange
@@ -55,7 +56,7 @@ extension UITextView: IndentationProtocol {
 		setContentOffset(contentOffset, animated: false)
 	}
 	
-	func removeIndentation(at index: Int) {
+	public func removeIndentation(at index: Int) {
 		guard let range = indentationRange(at: index) else {
 			return
 		}
@@ -71,7 +72,7 @@ extension UITextView: IndentationProtocol {
 		setContentOffset(contentOffset, animated: false)
 	}
 	
-	func toggleIndentation(at index: Int) {
+	public func toggleIndentation(at index: Int) {
 		guard let index = currentCursorPosition else {
 			return
 		}
@@ -82,7 +83,7 @@ extension UITextView: IndentationProtocol {
 		}
 	}
 	
-	func indentationRange(at index: Int) -> NSRange? {
+	public func indentationRange(at index: Int) -> NSRange? {
 		guard index < text.characters.count else {
 			return nil
 		}
@@ -100,7 +101,7 @@ extension UITextView: IndentationProtocol {
 		}
 	}
 	
-	func indentationPresent(at index: Int) -> Bool {
+	public func indentationPresent(at index: Int) -> Bool {
 		guard let startOfLineIndex = startOfLineIndex, index > startOfLineIndex else {
 			return false
 		}

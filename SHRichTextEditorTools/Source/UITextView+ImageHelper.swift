@@ -9,12 +9,13 @@
 import Foundation
 import UIKit
 
-protocol ImageInputEnabled: class {
+public protocol ImageInputEnabled: class {
 	func showImageInputView(completion: @escaping (UIImage?) -> ())
 	var imageSelectionView: UIView? { get }
 }
 
-protocol ImageInsertProtocol {
+public protocol ImageInsertProtocol {
+	var imageInputViewProvider: ImageInputEnabled? { get }
 	func insertImage(image: UIImage, at index: Int)
 	func selectImage(at index: Int, selectionView: UIView)
 	func deselectImage(at index: Int, selectionView: UIView)
@@ -24,7 +25,7 @@ private var imageInputViewProviderKey: UInt8 = 0
 
 extension UITextView: ImageInsertProtocol {
 	
-	var imageInputViewProvider: ImageInputEnabled? {
+	public var imageInputViewProvider: ImageInputEnabled? {
 		get {
 			return objc_getAssociatedObject(self, &imageInputViewProviderKey) as? ImageInputEnabled
 		}
@@ -34,13 +35,13 @@ extension UITextView: ImageInsertProtocol {
 		}
 	}
 	
-	func insertImage(image: UIImage, at index: Int) {
+	public func insertImage(image: UIImage, at index: Int) {
 		let oldWidth = image.size.width
 		let scaleFactor = oldWidth / (self.frame.size.width - 20)
 		self.attributedText = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor)
 	}
 
-	func selectImage(at index: Int, selectionView: UIView) {
+	public func selectImage(at index: Int, selectionView: UIView) {
 		let glyphRange: NSRange = layoutManager.range(ofNominallySpacedGlyphsContaining: index)
 		var textRect: CGRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
 		textRect.origin.x += textContainerInset.left
@@ -49,7 +50,7 @@ extension UITextView: ImageInsertProtocol {
 		addSubview(selectionView )
 	}
 	
-	func deselectImage(at index: Int, selectionView: UIView) {
+	public func deselectImage(at index: Int, selectionView: UIView) {
 		imageInputViewProvider?.imageSelectionView?.removeFromSuperview()
 	}
 }

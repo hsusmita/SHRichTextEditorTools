@@ -14,7 +14,7 @@ private var currentTappedIndexKey: UInt8 = 0
 public extension UITextView {
 	static let UITextViewTextDidChangeTap =  Notification.Name(rawValue: "UITextViewTextDidChangeTap")
 	
-	var touchEnabled: Bool {
+	public var touchEnabled: Bool {
 		get {
 			guard let gestureRecognizers = gestureRecognizers else {
 				return false
