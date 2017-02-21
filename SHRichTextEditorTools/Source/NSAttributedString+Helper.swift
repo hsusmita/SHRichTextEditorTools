@@ -39,9 +39,10 @@ public extension NSAttributedString {
 	}
 	
 	func insert(_ image: UIImage, at index: Int, scaleFactor: CGFloat) -> NSAttributedString? {
-		guard index < length else {
+		guard length >= index else {
 			return nil
 		}
+		
 		let textAttachment = NSTextAttachment()
 		textAttachment.image = image
 		textAttachment.image = UIImage(cgImage: image.cgImage!, scale: scaleFactor, orientation: .up)
@@ -49,7 +50,6 @@ public extension NSAttributedString {
 		let mutableAttributedString = NSMutableAttributedString(attributedString: self)
 		mutableAttributedString.insert(attrStringWithImage, at: index)
 		mutableAttributedString.addAttribute(NSAttachmentAttributeName, value: textAttachment, range: NSRange(location: index, length: 1))
-		mutableAttributedString.append(NSAttributedString(string: "     "))
 		return mutableAttributedString
 	}
 }

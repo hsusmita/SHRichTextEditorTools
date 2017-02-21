@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 private var actionOnTapAssociativeKey = "actionOnTapAssociativeKey"
+private var selectedStateHandlerKey = "selectedStateHandlerKey"
 
 public extension UIBarButtonItem {
 
@@ -21,85 +22,86 @@ public extension UIBarButtonItem {
 			self.action = #selector(UIBarButtonItem.performAction(sender:))
 		}
 	}
+	
+	var selectedStateHandler: ((Bool) -> ())? {
+		get { return objc_getAssociatedObject(self, &selectedStateHandlerKey) as? ((Bool) -> ()) }
+		set {
+			objc_setAssociatedObject(self, &selectedStateHandlerKey, newValue as Any, .OBJC_ASSOCIATION_RETAIN)
+		}
+	}
 
 	func performAction(sender: UIBarButtonItem) {
 		actionOnTap?()
 	}
 	
 	func enableBoldFeature(for textView: UITextView, textViewDelegate: TextViewDelegate) {
-		let defaultTintColor = tintColor
-		tintColor = UIColor.gray
 		let updateState: (UITextView) -> () = { [unowned self] (textView) in
-			if let index = textView.currentTappedIndex {
-				self.tintColor = textView.isCharacterBold(for: index) ? defaultTintColor : UIColor.gray
-			} else {
-				self.tintColor = defaultTintColor
+			guard let selectedStateHandler = self.selectedStateHandler,
+				let index = textView.currentTappedIndex else {
+					return
 			}
+			selectedStateHandler(textView.isCharacterBold(for: index))
 		}
 		actionOnTap = { [unowned self] _ in
 			textView.toggleBoldface(self)
 			updateState(textView)
 		}
-		textViewDelegate.register(event: .textViewDidChangeTap, action: updateState)
+		
+		textViewDelegate.registerDidTapChange(with: updateState)
 	}
 	
 	func enableItalicsFeature(for textView: UITextView, textViewDelegate: TextViewDelegate) {
-		let defaultTintColor = tintColor
-		tintColor = UIColor.gray
 		let updateState: (UITextView) -> () = { [unowned self] (textView) in
-			if let index = textView.currentTappedIndex {
-				self.tintColor = textView.isCharacterItalic(for: index) ? defaultTintColor : UIColor.gray
-			} else {
-				self.tintColor = defaultTintColor
+			guard let selectedStateHandler = self.selectedStateHandler,
+				let index = textView.currentTappedIndex else {
+					return
 			}
+			selectedStateHandler(textView.isCharacterItalic(for: index))
 		}
 		actionOnTap = {  [unowned self] _ in
 			textView.toggleItalics(self)
 			updateState(textView)
 		}
-		textViewDelegate.register(event: .textViewDidChangeTap, action: updateState)
+		textViewDelegate.registerDidTapChange(with: updateState)
 	}
 
 	func enableIndentationFeature(for textView: UITextView, textViewDelegate: TextViewDelegate) {
-		let defaultTintColor = tintColor
-		tintColor = UIColor.gray
 		let updateState: (UITextView) -> () = { [unowned self] (textView) in
-			if let index = textView.currentTappedIndex {
-				self.tintColor = textView.indentationPresent(at: index) ? defaultTintColor : UIColor.gray
-			} else {
-				self.tintColor = defaultTintColor
+			guard let selectedStateHandler = self.selectedStateHandler,
+				let index = textView.currentTappedIndex else {
+					return
 			}
+			selectedStateHandler(textView.indentationPresent(at: index))
 		}
 		actionOnTap = {
 			textView.toggleIndentation()
 			updateState(textView)
 		}
-		textViewDelegate.shouldChangeTextIn = { range, replacementText in
+		textViewDelegate.registerShouldChangeText { (textView, range, replacementText) -> (Bool) in
 			guard replacementText == "\n" && range.location >= 0 && textView.indentationPresent(at: range.location - 1) else {
 				return true
 			}
 			textView.addIndentation(at: range.location)
 			return false
+
 		}
-		textViewDelegate.register(event: .textViewDidChangeTap, action: updateState)
+		textViewDelegate.registerDidTapChange(with: updateState)
 	}
 	
 	func enableWordCount(for textView: UITextView, textViewDelegate: TextViewDelegate) {
 		title = String(textView.text.characters.count)
-		textViewDelegate.register(event: .textViewDidChange) { [unowned self] (textView) in
+		textViewDelegate.registerDidChangeText { [unowned self] (textView) in
 			self.title = String(textView.attributedText.length)
 		}
 	}
 	
 	func enableLinkInputFeature(for textView: UITextView, textViewDelegate: TextViewDelegate) {
-		let defaultTintColor = tintColor
-		tintColor = UIColor.gray
 		let updateState: (UITextView) -> () = { [unowned self] (textView) in
-			if let index = textView.currentTappedIndex {
-				self.tintColor = textView.attributedText.linkPresent(at: index) ? defaultTintColor : UIColor.gray
-			} else {
-				self.tintColor = defaultTintColor
+			guard let selectedStateHandler = self.selectedStateHandler,
+				let index = textView.currentTappedIndex else {
+					return
 			}
+			selectedStateHandler(textView.attributedText.linkPresent(at: index))
 		}
 		
 		actionOnTap = {
@@ -109,27 +111,24 @@ public extension UIBarButtonItem {
 				}
 			})
 		}
-		textViewDelegate.register(event: .textViewDidChangeTap, action: updateState)
+		textViewDelegate.registerDidTapChange(with: updateState)
 	}
 	
 	func enableImageInputFeature(for textView: UITextView, textViewDelegate: TextViewDelegate) {
-		let defaultTintColor = tintColor
-		tintColor = UIColor.gray
 		let updateState: (UITextView) -> () = { [unowned self] (textView) in
 			guard let index = textView.currentTappedIndex else {
-				self.tintColor = defaultTintColor
 				return
 			}
 			if textView.attributedText.imagePresent(at: index) {
 				if let selectionView = textView.imageInputViewProvider?.imageSelectionView {
 					textView.selectImage(at: index, selectionView: selectionView)
 				}
-				self.tintColor = defaultTintColor
+				self.selectedStateHandler?(true)
 			} else {
 				if let selectionView = textView.imageInputViewProvider?.imageSelectionView {
 					textView.deselectImage(at: index, selectionView: selectionView)
 				}
-				self.tintColor = UIColor.gray
+				self.selectedStateHandler?(false)
 			}
 		}
 		
@@ -140,7 +139,7 @@ public extension UIBarButtonItem {
 				}
 			})
 		}
-		textViewDelegate.register(event: .textViewDidChangeTap, action: updateState)
+		textViewDelegate.registerDidTapChange(with: updateState)
 	}
 }
 

@@ -29,6 +29,25 @@ class RichTextToolbar: UIToolbar {
 
 	class func toolbar() -> RichTextToolbar {
 		let toolBar = UINib(nibName: "RichTextToolbar", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RichTextToolbar
+		toolBar.configureButtons()
 		return toolBar
+	}
+	
+	func configureButtons() {
+		bulletButton.selectedStateHandler = { [unowned self] selected in
+			self.bulletButton.tintColor = selected ? UIColor.blue : UIColor.gray
+		}
+		boldButton.selectedStateHandler = { [unowned self] selected in
+			self.boldButton.tintColor = selected ? UIColor.blue : UIColor.gray
+		}
+		italicButton.selectedStateHandler = { [unowned self] selected in
+			self.italicButton.tintColor = selected ? UIColor.blue : UIColor.gray
+		}
+		linkButton.selectedStateHandler = { [unowned self] selected in
+			self.linkButton.tintColor = selected ? UIColor.blue : UIColor.gray
+		}
+		cameraButton.selectedStateHandler = { [unowned self] selected in
+			self.cameraButton.tintColor = selected ? UIColor.blue : UIColor.gray
+		}
 	}
 }

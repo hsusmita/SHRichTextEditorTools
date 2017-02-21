@@ -35,8 +35,7 @@ class SHRichTextEditor: NSObject {
 		textView.imageInputViewProvider = self
 		toolbar?.cameraButton.enableImageInputFeature(for: textView, textViewDelegate: textViewDelegate)
 		self.textView.inputAccessoryView = toolbar
-		
-		textViewDelegate.register(event: .textViewDidChangeTap) { textView in
+		textViewDelegate.registerDidTapChange { textView in
 			if let index = textView.currentTappedIndex {
 				if !textView.attributedText.imagePresent(at: index) {
 					textView.inputView = nil
