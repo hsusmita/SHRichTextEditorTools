@@ -4,6 +4,6 @@ This is a collection of extensions which are helpful in configuring UIBarButtonI
 #Installation
 
 Add following lines in your pod file  
-pod 'SHRichTextEditorTools', '~> 1.0.0'
+pod 'SHRichTextEditorTools', '~> 1.0.1'
 
 
