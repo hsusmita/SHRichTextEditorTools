@@ -51,9 +51,7 @@ class ImagePickerManager: NSObject {
 	}
 }
 
-extension ImagePickerManager: UINavigationControllerDelegate {
- 
-}
+extension ImagePickerManager: UINavigationControllerDelegate { }
 
 extension ImagePickerManager: UIImagePickerControllerDelegate {
 	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

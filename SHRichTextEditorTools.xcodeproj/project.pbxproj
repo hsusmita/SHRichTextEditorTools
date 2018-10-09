@@ -7,6 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		788C654E215CFDC700AF46A6 /* RichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C653E215CFDC700AF46A6 /* RichTextEditor.swift */; };
+		788C654F215CFDC700AF46A6 /* UITextView+LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6540215CFDC700AF46A6 /* UITextView+LinkHelper.swift */; };
+		788C6550215CFDC700AF46A6 /* UITextView+IndentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6541215CFDC700AF46A6 /* UITextView+IndentationHelper.swift */; };
+		788C6551215CFDC700AF46A6 /* UITextView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6542215CFDC700AF46A6 /* UITextView+Helpers.swift */; };
+		788C6552215CFDC700AF46A6 /* UITextView+ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6543215CFDC700AF46A6 /* UITextView+ImageHelper.swift */; };
+		788C6553215CFDC700AF46A6 /* UITextView+TapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6544215CFDC700AF46A6 /* UITextView+TapHandler.swift */; };
+		788C6554215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6545215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift */; };
+		788C6555215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6546215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift */; };
+		788C6556215CFDC700AF46A6 /* NSAttributedString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6547215CFDC700AF46A6 /* NSAttributedString+Helper.swift */; };
+		788C6557215CFDC700AF46A6 /* ToolBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6549215CFDC700AF46A6 /* ToolBarItem.swift */; };
+		788C6558215CFDC700AF46A6 /* ToolBarSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C654A215CFDC700AF46A6 /* ToolBarSpacer.swift */; };
+		788C6559215CFDC700AF46A6 /* ToolBarButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C654B215CFDC700AF46A6 /* ToolBarButtonExtensions.swift */; };
+		788C655A215CFDC700AF46A6 /* ToolBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C654C215CFDC700AF46A6 /* ToolBarButton.swift */; };
+		788C655B215CFDC700AF46A6 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C654D215CFDC700AF46A6 /* TextViewDelegate.swift */; };
+		788C6564215CFE0B00AF46A6 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C655D215CFE0B00AF46A6 /* ImagePickerManager.swift */; };
+		788C6565215CFE0B00AF46A6 /* SHRichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C655E215CFE0B00AF46A6 /* SHRichTextEditor.swift */; };
+		788C6566215CFE0B00AF46A6 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C655F215CFE0B00AF46A6 /* UIViewController+Helper.swift */; };
+		788C6567215CFE0B00AF46A6 /* ImageBorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788C6560215CFE0B00AF46A6 /* ImageBorderView.xib */; };
+		788C6568215CFE0B00AF46A6 /* ImageBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6561215CFE0B00AF46A6 /* ImageBorderView.swift */; };
+		788C6569215CFE0B00AF46A6 /* CameraInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788C6562215CFE0B00AF46A6 /* CameraInputView.xib */; };
+		788C656A215CFE0B00AF46A6 /* CameraInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6563215CFE0B00AF46A6 /* CameraInputView.swift */; };
+		78AAA3881E5D70C5009CC1BF /* TextViewDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AAA3871E5D70C5009CC1BF /* TextViewDelegateTests.swift */; };
 		78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830351E5B0A32005B9057 /* AppDelegate.swift */; };
 		78B830381E5B0A32005B9057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830371E5B0A32005B9057 /* ViewController.swift */; };
 		78B8303B1E5B0A32005B9057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B830391E5B0A32005B9057 /* Main.storyboard */; };
@@ -14,24 +36,8 @@
 		78B830401E5B0A32005B9057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B8303E1E5B0A32005B9057 /* LaunchScreen.storyboard */; };
 		78B8304B1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8304A1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift */; };
 		78B830561E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830551E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift */; };
-		78B8306E1E5B0B07005B9057 /* NSAttributedString+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */; };
-		78B8306F1E5B0B07005B9057 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830651E5B0B07005B9057 /* TextViewDelegate.swift */; };
-		78B830701E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */; };
-		78B830711E5B0B07005B9057 /* UIFont+SymbolicTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */; };
-		78B830721E5B0B07005B9057 /* UITextView+ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */; };
-		78B830731E5B0B07005B9057 /* UITextView+IndentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */; };
-		78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */; };
-		78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */; };
-		78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */; };
-		78B830821E5B0C37005B9057 /* CameraInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830791E5B0C37005B9057 /* CameraInputView.swift */; };
-		78B830831E5B0C37005B9057 /* CameraInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307A1E5B0C37005B9057 /* CameraInputView.xib */; };
-		78B830841E5B0C37005B9057 /* ImageBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */; };
-		78B830851E5B0C37005B9057 /* ImageBorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */; };
-		78B830861E5B0C37005B9057 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */; };
-		78B830871E5B0C37005B9057 /* RichTextToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */; };
-		78B830881E5B0C37005B9057 /* RichTextToolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */; };
-		78B830891E5B0C37005B9057 /* SHRichTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */; };
-		78B8308A1E5B0C37005B9057 /* UIViewController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */; };
+		78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D616D7216B6F6E00440E71 /* TextViewImageInputHandler.swift */; };
+		78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D616DA216B73D500440E71 /* LinkInputAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		788C653E215CFDC700AF46A6 /* RichTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RichTextEditor.swift; sourceTree = "<group>"; };
+		788C6540215CFDC700AF46A6 /* UITextView+LinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+LinkHelper.swift"; sourceTree = "<group>"; };
+		788C6541215CFDC700AF46A6 /* UITextView+IndentationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+IndentationHelper.swift"; sourceTree = "<group>"; };
+		788C6542215CFDC700AF46A6 /* UITextView+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Helpers.swift"; sourceTree = "<group>"; };
+		788C6543215CFDC700AF46A6 /* UITextView+ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+ImageHelper.swift"; sourceTree = "<group>"; };
+		788C6544215CFDC700AF46A6 /* UITextView+TapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+TapHandler.swift"; sourceTree = "<group>"; };
+		788C6545215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+ToolBarItemHelper.swift"; sourceTree = "<group>"; };
+		788C6546215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
+		788C6547215CFDC700AF46A6 /* NSAttributedString+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Helper.swift"; sourceTree = "<group>"; };
+		788C6549215CFDC700AF46A6 /* ToolBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarItem.swift; sourceTree = "<group>"; };
+		788C654A215CFDC700AF46A6 /* ToolBarSpacer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarSpacer.swift; sourceTree = "<group>"; };
+		788C654B215CFDC700AF46A6 /* ToolBarButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarButtonExtensions.swift; sourceTree = "<group>"; };
+		788C654C215CFDC700AF46A6 /* ToolBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarButton.swift; sourceTree = "<group>"; };
+		788C654D215CFDC700AF46A6 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
+		788C655D215CFE0B00AF46A6 /* ImagePickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		788C655E215CFE0B00AF46A6 /* SHRichTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SHRichTextEditor.swift; sourceTree = "<group>"; };
+		788C655F215CFE0B00AF46A6 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Helper.swift"; sourceTree = "<group>"; };
+		788C6560215CFE0B00AF46A6 /* ImageBorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageBorderView.xib; sourceTree = "<group>"; };
+		788C6561215CFE0B00AF46A6 /* ImageBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBorderView.swift; sourceTree = "<group>"; };
+		788C6562215CFE0B00AF46A6 /* CameraInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraInputView.xib; sourceTree = "<group>"; };
+		788C6563215CFE0B00AF46A6 /* CameraInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInputView.swift; sourceTree = "<group>"; };
+		78AAA3871E5D70C5009CC1BF /* TextViewDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegateTests.swift; sourceTree = "<group>"; };
 		78B830321E5B0A32005B9057 /* SHRichTextEditorTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHRichTextEditorTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B830351E5B0A32005B9057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78B830371E5B0A32005B9057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,24 +93,8 @@
 		78B830511E5B0A32005B9057 /* SHRichTextEditorToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SHRichTextEditorToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B830551E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRichTextEditorToolsUITests.swift; sourceTree = "<group>"; };
 		78B830571E5B0A32005B9057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Helper.swift"; path = "Source/NSAttributedString+Helper.swift"; sourceTree = "<group>"; };
-		78B830651E5B0B07005B9057 /* TextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextViewDelegate.swift; path = Source/TextViewDelegate.swift; sourceTree = "<group>"; };
-		78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIBarButtonItem+SHRichTextEditorTools.swift"; path = "Source/UIBarButtonItem+SHRichTextEditorTools.swift"; sourceTree = "<group>"; };
-		78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIFont+SymbolicTraits.swift"; path = "Source/UIFont+SymbolicTraits.swift"; sourceTree = "<group>"; };
-		78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+ImageHelper.swift"; path = "Source/UITextView+ImageHelper.swift"; sourceTree = "<group>"; };
-		78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+IndentationHelper.swift"; path = "Source/UITextView+IndentationHelper.swift"; sourceTree = "<group>"; };
-		78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+LinkHelper.swift"; path = "Source/UITextView+LinkHelper.swift"; sourceTree = "<group>"; };
-		78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+SHRichTextEditorTools.swift"; path = "Source/UITextView+SHRichTextEditorTools.swift"; sourceTree = "<group>"; };
-		78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextView+TapHandler.swift"; path = "Source/UITextView+TapHandler.swift"; sourceTree = "<group>"; };
-		78B830791E5B0C37005B9057 /* CameraInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraInputView.swift; path = Editor/CameraInputView.swift; sourceTree = "<group>"; };
-		78B8307A1E5B0C37005B9057 /* CameraInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraInputView.xib; path = Editor/CameraInputView.xib; sourceTree = "<group>"; };
-		78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBorderView.swift; path = Editor/ImageBorderView.swift; sourceTree = "<group>"; };
-		78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageBorderView.xib; path = Editor/ImageBorderView.xib; sourceTree = "<group>"; };
-		78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePickerManager.swift; path = Editor/ImagePickerManager.swift; sourceTree = "<group>"; };
-		78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RichTextToolbar.swift; path = Editor/RichTextToolbar.swift; sourceTree = "<group>"; };
-		78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RichTextToolbar.xib; path = Editor/RichTextToolbar.xib; sourceTree = "<group>"; };
-		78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SHRichTextEditor.swift; path = Editor/SHRichTextEditor.swift; sourceTree = "<group>"; };
-		78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Helper.swift"; path = "Editor/UIViewController+Helper.swift"; sourceTree = "<group>"; };
+		78D616D7216B6F6E00440E71 /* TextViewImageInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewImageInputHandler.swift; sourceTree = "<group>"; };
+		78D616DA216B73D500440E71 /* LinkInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInputAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +122,74 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		788C653D215CFDC700AF46A6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				788C653E215CFDC700AF46A6 /* RichTextEditor.swift */,
+				788C654D215CFDC700AF46A6 /* TextViewDelegate.swift */,
+				788C655C215CFE0B00AF46A6 /* SHRichTextEditor */,
+				788C653F215CFDC700AF46A6 /* Extensions */,
+				788C6548215CFDC700AF46A6 /* ToolBarItem */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		788C653F215CFDC700AF46A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				788C6540215CFDC700AF46A6 /* UITextView+LinkHelper.swift */,
+				788C6541215CFDC700AF46A6 /* UITextView+IndentationHelper.swift */,
+				788C6542215CFDC700AF46A6 /* UITextView+Helpers.swift */,
+				788C6543215CFDC700AF46A6 /* UITextView+ImageHelper.swift */,
+				788C6544215CFDC700AF46A6 /* UITextView+TapHandler.swift */,
+				788C6545215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift */,
+				788C6546215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift */,
+				788C6547215CFDC700AF46A6 /* NSAttributedString+Helper.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		788C6548215CFDC700AF46A6 /* ToolBarItem */ = {
+			isa = PBXGroup;
+			children = (
+				788C6549215CFDC700AF46A6 /* ToolBarItem.swift */,
+				788C654A215CFDC700AF46A6 /* ToolBarSpacer.swift */,
+				788C654C215CFDC700AF46A6 /* ToolBarButton.swift */,
+				788C654B215CFDC700AF46A6 /* ToolBarButtonExtensions.swift */,
+			);
+			path = ToolBarItem;
+			sourceTree = "<group>";
+		};
+		788C655C215CFE0B00AF46A6 /* SHRichTextEditor */ = {
+			isa = PBXGroup;
+			children = (
+				788C655E215CFE0B00AF46A6 /* SHRichTextEditor.swift */,
+				788C655F215CFE0B00AF46A6 /* UIViewController+Helper.swift */,
+				78D616D9216B6FDA00440E71 /* ImageInputHandler */,
+				788C655D215CFE0B00AF46A6 /* ImagePickerManager.swift */,
+				78D616DA216B73D500440E71 /* LinkInputAlert.swift */,
+			);
+			path = SHRichTextEditor;
+			sourceTree = "<group>";
+		};
+		788C656B215CFE3800AF46A6 /* ImageBorderView */ = {
+			isa = PBXGroup;
+			children = (
+				788C6560215CFE0B00AF46A6 /* ImageBorderView.xib */,
+				788C6561215CFE0B00AF46A6 /* ImageBorderView.swift */,
+			);
+			path = ImageBorderView;
+			sourceTree = "<group>";
+		};
+		788C656C215CFE4400AF46A6 /* CameraInputView */ = {
+			isa = PBXGroup;
+			children = (
+				788C6562215CFE0B00AF46A6 /* CameraInputView.xib */,
+				788C6563215CFE0B00AF46A6 /* CameraInputView.swift */,
+			);
+			path = CameraInputView;
+			sourceTree = "<group>";
+		};
 		78B830291E5B0A32005B9057 = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +213,7 @@
 		78B830341E5B0A32005B9057 /* SHRichTextEditorTools */ = {
 			isa = PBXGroup;
 			children = (
-				78B830781E5B0C2E005B9057 /* Editor */,
-				78B830631E5B0ACF005B9057 /* Source */,
+				788C653D215CFDC700AF46A6 /* Source */,
 				78B830351E5B0A32005B9057 /* AppDelegate.swift */,
 				78B830371E5B0A32005B9057 /* ViewController.swift */,
 				78B830391E5B0A32005B9057 /* Main.storyboard */,
@@ -150,6 +229,7 @@
 			children = (
 				78B8304A1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift */,
 				78B8304C1E5B0A32005B9057 /* Info.plist */,
+				78AAA3871E5D70C5009CC1BF /* TextViewDelegateTests.swift */,
 			);
 			path = SHRichTextEditorToolsTests;
 			sourceTree = "<group>";
@@ -163,36 +243,14 @@
 			path = SHRichTextEditorToolsUITests;
 			sourceTree = "<group>";
 		};
-		78B830631E5B0ACF005B9057 /* Source */ = {
+		78D616D9216B6FDA00440E71 /* ImageInputHandler */ = {
 			isa = PBXGroup;
 			children = (
-				78B830641E5B0B07005B9057 /* NSAttributedString+Helper.swift */,
-				78B830651E5B0B07005B9057 /* TextViewDelegate.swift */,
-				78B830661E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift */,
-				78B830671E5B0B07005B9057 /* UIFont+SymbolicTraits.swift */,
-				78B830681E5B0B07005B9057 /* UITextView+ImageHelper.swift */,
-				78B830691E5B0B07005B9057 /* UITextView+IndentationHelper.swift */,
-				78B8306A1E5B0B07005B9057 /* UITextView+LinkHelper.swift */,
-				78B8306B1E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift */,
-				78B8306C1E5B0B07005B9057 /* UITextView+TapHandler.swift */,
+				78D616D7216B6F6E00440E71 /* TextViewImageInputHandler.swift */,
+				788C656B215CFE3800AF46A6 /* ImageBorderView */,
+				788C656C215CFE4400AF46A6 /* CameraInputView */,
 			);
-			name = Source;
-			sourceTree = "<group>";
-		};
-		78B830781E5B0C2E005B9057 /* Editor */ = {
-			isa = PBXGroup;
-			children = (
-				78B830791E5B0C37005B9057 /* CameraInputView.swift */,
-				78B8307A1E5B0C37005B9057 /* CameraInputView.xib */,
-				78B8307B1E5B0C37005B9057 /* ImageBorderView.swift */,
-				78B8307C1E5B0C37005B9057 /* ImageBorderView.xib */,
-				78B8307D1E5B0C37005B9057 /* ImagePickerManager.swift */,
-				78B8307E1E5B0C37005B9057 /* RichTextToolbar.swift */,
-				78B8307F1E5B0C37005B9057 /* RichTextToolbar.xib */,
-				78B830801E5B0C37005B9057 /* SHRichTextEditor.swift */,
-				78B830811E5B0C37005B9057 /* UIViewController+Helper.swift */,
-			);
-			name = Editor;
+			path = ImageInputHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,23 +316,26 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = hsusmita;
 				TargetAttributes = {
 					78B830311E5B0A32005B9057 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HP3Q6K3LF3;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 					78B830451E5B0A32005B9057 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HP3Q6K3LF3;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 78B830311E5B0A32005B9057;
 					};
 					78B830501E5B0A32005B9057 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = HP3Q6K3LF3;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 78B830311E5B0A32005B9057;
 					};
@@ -305,12 +366,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B830831E5B0C37005B9057 /* CameraInputView.xib in Resources */,
+				788C6567215CFE0B00AF46A6 /* ImageBorderView.xib in Resources */,
 				78B830401E5B0A32005B9057 /* LaunchScreen.storyboard in Resources */,
-				78B830881E5B0C37005B9057 /* RichTextToolbar.xib in Resources */,
-				78B830851E5B0C37005B9057 /* ImageBorderView.xib in Resources */,
 				78B8303D1E5B0A32005B9057 /* Assets.xcassets in Resources */,
 				78B8303B1E5B0A32005B9057 /* Main.storyboard in Resources */,
+				788C6569215CFE0B00AF46A6 /* CameraInputView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,23 +395,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78B8308A1E5B0C37005B9057 /* UIViewController+Helper.swift in Sources */,
-				78B8306F1E5B0B07005B9057 /* TextViewDelegate.swift in Sources */,
-				78B8306E1E5B0B07005B9057 /* NSAttributedString+Helper.swift in Sources */,
-				78B830701E5B0B07005B9057 /* UIBarButtonItem+SHRichTextEditorTools.swift in Sources */,
+				788C6554215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift in Sources */,
+				788C6555215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift in Sources */,
+				788C654E215CFDC700AF46A6 /* RichTextEditor.swift in Sources */,
+				788C6551215CFDC700AF46A6 /* UITextView+Helpers.swift in Sources */,
+				788C6558215CFDC700AF46A6 /* ToolBarSpacer.swift in Sources */,
+				788C6556215CFDC700AF46A6 /* NSAttributedString+Helper.swift in Sources */,
+				788C6553215CFDC700AF46A6 /* UITextView+TapHandler.swift in Sources */,
 				78B830381E5B0A32005B9057 /* ViewController.swift in Sources */,
-				78B830821E5B0C37005B9057 /* CameraInputView.swift in Sources */,
-				78B830741E5B0B07005B9057 /* UITextView+LinkHelper.swift in Sources */,
-				78B830841E5B0C37005B9057 /* ImageBorderView.swift in Sources */,
+				788C6568215CFE0B00AF46A6 /* ImageBorderView.swift in Sources */,
+				788C655A215CFDC700AF46A6 /* ToolBarButton.swift in Sources */,
+				788C6550215CFDC700AF46A6 /* UITextView+IndentationHelper.swift in Sources */,
+				788C654F215CFDC700AF46A6 /* UITextView+LinkHelper.swift in Sources */,
+				788C6566215CFE0B00AF46A6 /* UIViewController+Helper.swift in Sources */,
+				788C656A215CFE0B00AF46A6 /* CameraInputView.swift in Sources */,
+				788C6557215CFDC700AF46A6 /* ToolBarItem.swift in Sources */,
+				788C6552215CFDC700AF46A6 /* UITextView+ImageHelper.swift in Sources */,
+				788C6564215CFE0B00AF46A6 /* ImagePickerManager.swift in Sources */,
+				788C655B215CFDC700AF46A6 /* TextViewDelegate.swift in Sources */,
 				78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */,
-				78B830871E5B0C37005B9057 /* RichTextToolbar.swift in Sources */,
-				78B830761E5B0B07005B9057 /* UITextView+TapHandler.swift in Sources */,
-				78B830861E5B0C37005B9057 /* ImagePickerManager.swift in Sources */,
-				78B830751E5B0B07005B9057 /* UITextView+SHRichTextEditorTools.swift in Sources */,
-				78B830721E5B0B07005B9057 /* UITextView+ImageHelper.swift in Sources */,
-				78B830711E5B0B07005B9057 /* UIFont+SymbolicTraits.swift in Sources */,
-				78B830891E5B0C37005B9057 /* SHRichTextEditor.swift in Sources */,
-				78B830731E5B0B07005B9057 /* UITextView+IndentationHelper.swift in Sources */,
+				78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */,
+				78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */,
+				788C6565215CFE0B00AF46A6 /* SHRichTextEditor.swift in Sources */,
+				788C6559215CFDC700AF46A6 /* ToolBarButtonExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78AAA3881E5D70C5009CC1BF /* TextViewDelegateTests.swift in Sources */,
 				78B8304B1E5B0A32005B9057 /* SHRichTextEditorToolsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,15 +482,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -446,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -465,15 +540,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -490,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -508,7 +591,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -521,7 +605,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -535,7 +620,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHRichTextEditorTools.app/SHRichTextEditorTools";
 			};
 			name = Debug;
@@ -550,7 +636,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SHRichTextEditorTools.app/SHRichTextEditorTools";
 			};
 			name = Release;
@@ -564,7 +651,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorToolsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = SHRichTextEditorTools;
 			};
 			name = Debug;
@@ -578,7 +666,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsusmita.SHRichTextEditorToolsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = SHRichTextEditorTools;
 			};
 			name = Release;
@@ -602,6 +691,7 @@
 				78B8305C1E5B0A32005B9057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78B8305D1E5B0A32005B9057 /* Build configuration list for PBXNativeTarget "SHRichTextEditorToolsTests" */ = {
 			isa = XCConfigurationList;
@@ -610,6 +700,7 @@
 				78B8305F1E5B0A32005B9057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		78B830601E5B0A32005B9057 /* Build configuration list for PBXNativeTarget "SHRichTextEditorToolsUITests" */ = {
 			isa = XCConfigurationList;
@@ -618,6 +709,7 @@
 				78B830621E5B0A32005B9057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

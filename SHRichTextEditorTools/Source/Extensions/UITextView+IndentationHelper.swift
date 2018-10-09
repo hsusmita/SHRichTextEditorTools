@@ -40,7 +40,7 @@ extension UITextView: IndentationProtocol {
 		let attributedStringToAppend: NSMutableAttributedString = NSMutableAttributedString(string: indentationString)
 		let contentOffset = self.contentOffset
 		let selectedRange = selectedTextRange
-		attributedStringToAppend.addAttribute(NSFontAttributeName,
+		attributedStringToAppend.addAttribute(NSAttributedStringKey.font,
 		                                      value: self.attributedText.font(at: index) ?? font!,
 		                                      range: NSRange(location: 0, length: attributedStringToAppend.length))
 		let updatedText: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedText)
@@ -54,6 +54,7 @@ extension UITextView: IndentationProtocol {
 			selectedTextRange = textRange(from: start, to: end)
 		}
 		setContentOffset(contentOffset, animated: false)
+		self.delegate?.textViewDidChange?(self)
 	}
 	
 	public func removeIndentation(at index: Int) {
@@ -65,11 +66,12 @@ extension UITextView: IndentationProtocol {
 		updatedText.replaceCharacters(in: range, with: "")
 		attributedText = updatedText
 		if let currentSelectedRange = selectedRange,
-			let start = position(from: currentSelectedRange.start, offset: -indentationString.characters.count),
-			let end = position(from: currentSelectedRange.end, offset: -indentationString.characters.count) {
+			let start = position(from: currentSelectedRange.start, offset: -indentationString.count),
+			let end = position(from: currentSelectedRange.end, offset: -indentationString.count) {
 			selectedTextRange = textRange(from: start, to: end)
 		}
 		setContentOffset(contentOffset, animated: false)
+		self.delegate?.textViewDidChange?(self)
 	}
 	
 	public func toggleIndentation(at index: Int) {
@@ -84,7 +86,7 @@ extension UITextView: IndentationProtocol {
 	}
 	
 	public func indentationRange(at index: Int) -> NSRange? {
-		guard index < text.characters.count else {
+		guard index < text.count else {
 			return nil
 		}
 		var lineRange = NSMakeRange(NSNotFound, 0)
@@ -97,12 +99,12 @@ extension UITextView: IndentationProtocol {
 		if indentationRange.length == 0 {
 			return nil
 		} else {
-			return NSRange(location: lineRange.location - 1, length: indentationString.characters.count)
+			return NSRange(location: lineRange.location - 1, length: indentationString.count)
 		}
 	}
 	
 	public func indentationPresent(at index: Int) -> Bool {
-		guard let startOfLineIndex = startOfLineIndex, index > startOfLineIndex else {
+		guard let startOfLineIndex = startOfLineIndex, index > startOfLineIndex, index < text.count else {
 			return false
 		}
 		let range = NSRange(location: startOfLineIndex, length: index - startOfLineIndex)

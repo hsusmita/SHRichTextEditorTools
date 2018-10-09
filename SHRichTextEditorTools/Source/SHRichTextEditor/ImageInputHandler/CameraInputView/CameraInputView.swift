@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CameraInputView: UIView {
-	
 	var actionOnCameraTap: (() -> ())?
 	var actionOnLibraryTap: (() -> ())?
 	class func cameraInputView() -> CameraInputView {

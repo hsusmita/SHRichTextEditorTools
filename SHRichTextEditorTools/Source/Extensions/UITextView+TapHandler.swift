@@ -12,8 +12,9 @@ import UIKit
 private var currentTappedIndexKey: UInt8 = 0
 
 public extension UITextView {
-	static let UITextViewTextDidChangeTap =  Notification.Name(rawValue: "UITextViewTextDidChangeTap")
-	
+	static let UITextViewTextDidChangeTap = Notification.Name(rawValue: "UITextViewTextDidChangeTap")
+	static let UITextViewTextDidLongPress = Notification.Name(rawValue: "UITextViewTextDidLongPress")
+
 	public var touchEnabled: Bool {
 		get {
 			guard let gestureRecognizers = gestureRecognizers else {
@@ -25,7 +26,11 @@ public extension UITextView {
 		set {
 			let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 			tap.delegate = self
-			addGestureRecognizer(tap)
+			self.addGestureRecognizer(tap)
+
+			let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+			longPress.delegate = self
+			self.addGestureRecognizer(longPress)
 		}
 	}
 	
@@ -40,13 +45,23 @@ public extension UITextView {
 		
 	}
 	
-	func handleTap(_ sender: UITapGestureRecognizer) {
+	@objc func handleTap(_ sender: UITapGestureRecognizer) {
 		let location = sender.location(in: self)
-		if let index = characterIndex(at: location), index < textStorage.length {
-			currentTappedIndex = index
+		if let index = self.characterIndex(at: location), index < textStorage.length {
+			self.currentTappedIndex = index
 			let notification: Notification = Notification(name: UITextView.UITextViewTextDidChangeTap, object: self, userInfo: nil)
 			NotificationCenter.default.post(notification)
 		}
+	}
+
+	@objc func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+		let location = sender.location(in: self)
+		if let index = self.characterIndex(at: location), index < textStorage.length {
+			self.currentTappedIndex = index
+			let notification: Notification = Notification(name: UITextView.UITextViewTextDidLongPress, object: self, userInfo: nil)
+			NotificationCenter.default.post(notification)
+		}
+
 	}
 }
 

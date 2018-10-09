@@ -9,36 +9,23 @@
 import Foundation
 import UIKit
 
-public protocol ImageInputEnabled: class {
+public protocol ImageInputHandler: class {
 	func showImageInputView(completion: @escaping (UIImage?) -> ())
 	var imageSelectionView: UIView? { get }
 }
 
-public protocol ImageInsertProtocol {
-	var imageInputViewProvider: ImageInputEnabled? { get }
-	func insertImage(image: UIImage, at index: Int)
-	func selectImage(at index: Int, selectionView: UIView)
-	func deselectImage(at index: Int, selectionView: UIView)
-}
-
-private var imageInputViewProviderKey: UInt8 = 0
-
-extension UITextView: ImageInsertProtocol {
-	
-	public var imageInputViewProvider: ImageInputEnabled? {
-		get {
-			return objc_getAssociatedObject(self, &imageInputViewProviderKey) as? ImageInputEnabled
-		}
-		
-		set {
-			objc_setAssociatedObject(self, &imageInputViewProviderKey, newValue, .OBJC_ASSOCIATION_RETAIN)
-		}
-	}
-	
+extension UITextView {
 	public func insertImage(image: UIImage, at index: Int) {
 		let oldWidth = image.size.width
 		let scaleFactor = oldWidth / (self.frame.size.width - 20)
-		self.attributedText = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor)
+		let spaceString = NSMutableAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: self.font ?? UIFont.systemFont(ofSize: 12.0)])
+		let finalAttributedString = NSMutableAttributedString(attributedString: spaceString)
+		guard let attributedStringWithImage = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor) else {
+			return
+		}
+		finalAttributedString.append(attributedStringWithImage)
+		finalAttributedString.append(spaceString)
+		self.attributedText = finalAttributedString
 	}
 
 	public func selectImage(at index: Int, selectionView: UIView) {
@@ -47,10 +34,11 @@ extension UITextView: ImageInsertProtocol {
 		textRect.origin.x += textContainerInset.left
 		textRect.origin.y += textContainerInset.top
 		selectionView.frame = textRect
-		addSubview(selectionView )
+		selectionView.removeFromSuperview()
+		addSubview(selectionView)
 	}
 	
 	public func deselectImage(at index: Int, selectionView: UIView) {
-		imageInputViewProvider?.imageSelectionView?.removeFromSuperview()
+		selectionView.removeFromSuperview()
 	}
 }

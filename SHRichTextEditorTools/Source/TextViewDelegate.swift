@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 open class TextViewDelegate: NSObject {
-	
 	fileprivate enum Event: Int {
 		case textViewShouldBeginEditing
 		case textViewDidBeginEditing
@@ -20,6 +19,7 @@ open class TextViewDelegate: NSObject {
 		case textViewDidChangeSelection
 		case textViewDidChangeText
 		case textViewDidChangeTap
+		case textViewDidLongPress
 		case textViewShouldInteractWithURL
 		case textViewShouldInteractWithTextAttachment
 	}
@@ -28,81 +28,97 @@ open class TextViewDelegate: NSObject {
 	
 	public override init() {
 		super.init()
-		observeTapChange()
+		self.observeTapChange()
 	}
 	
 	deinit {
-		NotificationCenter.default.removeObserver(self)
+		NotificationCenter.default.removeObserver(self, name: UITextView.UITextViewTextDidChangeTap, object: nil)
 	}
 	
-	open func registerShouldBeginEditing(with handler: (UITextView) -> Bool) {
-		register(event: .textViewShouldBeginEditing, handler: handler)
+	open func registerShouldBeginEditing(with handler: @escaping (UITextView) -> Bool) {
+		self.register(event: .textViewShouldBeginEditing, handler: handler)
 	}
 	
-	open func registerShouldEndEditing(with handler: (UITextView) -> Bool) {
-		register(event: .textViewShouldEndEditing, handler: handler)
+	open func registerDidBeginEditing(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidBeginEditing, handler: handler)
 	}
 	
-	open func registerDidBeginEditing(with handler: (UITextView) -> ()) {
-		register(event: .textViewDidBeginEditing, handler: handler)
+	open func registerShouldEndEditing(with handler: @escaping (UITextView) -> Bool) {
+		self.register(event: .textViewShouldEndEditing, handler: handler)
 	}
 	
-	open func registerDidEndEditing(with handler: (UITextView) -> ()) {
-		register(event: .textViewDidEndEditing, handler: handler)
+	open func registerDidEndEditing(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidEndEditing, handler: handler)
 	}
 	
-	open func registerShouldChangeText(with handler: (UITextView, NSRange, String) -> (Bool)) {
-		register(event: .textViewShouldChangeText, handler: handler)
+	open func registerShouldChangeText(with handler: @escaping (UITextView, NSRange, String) -> (Bool)) {
+		self.register(event: .textViewShouldChangeText, handler: handler)
 	}
 	
-	open func registerDidChangeText(with handler: (UITextView) -> ()) {
-		register(event: .textViewDidChangeText, handler: handler)
+	open func registerDidChangeText(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidChangeText, handler: handler)
 	}
 	
-	open func registerDidChangeSelection(with handler: (UITextView) -> ()) {
-		register(event: .textViewDidChangeSelection, handler: handler)
+	open func registerDidChangeSelection(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidChangeSelection, handler: handler)
 	}
 	
-	open func registerShouldInteractURL(with handler: (UITextView, URL, NSRange, UITextItemInteraction) -> Bool) {
-		register(event: .textViewShouldInteractWithURL, handler: handler)
+	open func registerShouldInteractURL(with handler: @escaping (UITextView, URL, NSRange, UITextItemInteraction) -> Bool) {
+		self.register(event: .textViewShouldInteractWithURL, handler: handler)
 	}
 	
-	open func registerShouldInteractTextAttachment(with handler: (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool) {
-		register(event: .textViewShouldInteractWithTextAttachment, handler: handler)
+	open func registerShouldInteractTextAttachment(with handler: @escaping (UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> Bool) {
+		self.register(event: .textViewShouldInteractWithTextAttachment, handler: handler)
 	}
 	
-	open func registerDidTapChange(with handler: (UITextView) -> ()) {
-		register(event: .textViewDidChangeTap, handler: handler)
+	open func registerDidTapChange(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidChangeTap, handler: handler)
+	}
+	
+	open func registerDidLongPress(with handler: @escaping (UITextView) -> ()) {
+		self.register(event: .textViewDidLongPress, handler: handler)
 	}
 	
 	private func register(event: Event, handler: Any) {
 		if let _ = actionsForEvents[event] {
-			actionsForEvents[event]!.append(handler)
+			self.actionsForEvents[event]!.append(handler)
 		} else {
-			actionsForEvents[event] = [handler]
+			self.actionsForEvents[event] = [handler]
 		}
 	}
 	
 	private func observeTapChange() {
+		print(self)
 		NotificationCenter.default.addObserver(forName: UITextView.UITextViewTextDidChangeTap, object: nil,
-		                                       queue: OperationQueue.main) { [unowned self] notification in
+											   queue: OperationQueue.main) { [weak self] notification in
 												let textView = notification.object as! UITextView
-												guard let actionsForTapChange: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidChangeTap] as? [(UITextView) -> ()] else {
+												guard let actionsForTapChange: [(UITextView) -> ()] = self?.actionsForEvents[.textViewDidChangeTap] as? [(UITextView) -> ()] else {
 													return
 												}
 												for action in actionsForTapChange {
 													action(textView)
 												}
-		
+												
 		}
-		
+		NotificationCenter.default.addObserver(forName: UITextView.UITextViewTextDidLongPress,
+											   object: nil,
+											   queue: OperationQueue.main) { [weak self] notification in
+												let textView = notification.object as! UITextView
+												guard let actionsForLongPress: [(UITextView) -> ()] = self?.actionsForEvents[.textViewDidLongPress] as? [(UITextView) -> ()] else {
+													return
+												}
+												for action in actionsForLongPress {
+													action(textView)
+												}
+												
+		}
 	}
 }
 
 extension TextViewDelegate: UITextViewDelegate {
 	
 	public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-		guard let actionsForShouldBeginEditing: [(UITextView) -> (Bool)] = actionsForEvents[.textViewShouldBeginEditing] as? [(UITextView) -> (Bool)] else {
+		guard let actionsForShouldBeginEditing: [(UITextView) -> (Bool)] = self.actionsForEvents[.textViewShouldBeginEditing] as? [(UITextView) -> (Bool)] else {
 			return true
 		}
 		var shouldBeginEditing = true
@@ -113,7 +129,7 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-		guard let actionsForShouldEndEditing: [(UITextView) -> (Bool)] = actionsForEvents[.textViewShouldEndEditing] as? [(UITextView) -> (Bool)] else {
+		guard let actionsForShouldEndEditing: [(UITextView) -> (Bool)] = self.actionsForEvents[.textViewShouldEndEditing] as? [(UITextView) -> (Bool)] else {
 			return true
 		}
 		var shouldEndEditing = true
@@ -124,7 +140,7 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textViewDidBeginEditing(_ textView: UITextView) {
-		guard let actionsForBeginEditing: [(UITextView) -> ()] = actionsForEvents[.textViewDidBeginEditing] as? [(UITextView) -> ()] else {
+		guard let actionsForBeginEditing: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidBeginEditing] as? [(UITextView) -> ()] else {
 			return
 		}
 		for action in actionsForBeginEditing {
@@ -133,7 +149,7 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textViewDidEndEditing(_ textView: UITextView) {
-		guard let actionsForEndEditing: [(UITextView) -> ()] = actionsForEvents[.textViewDidEndEditing] as? [(UITextView) -> ()] else {
+		guard let actionsForEndEditing: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidEndEditing] as? [(UITextView) -> ()] else {
 			return
 		}
 		for action in actionsForEndEditing {
@@ -142,11 +158,11 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textView(_ textView: UITextView,
-	                     shouldChangeTextIn range: NSRange,
-	                     replacementText text: String) -> Bool {
+						 shouldChangeTextIn range: NSRange,
+						 replacementText text: String) -> Bool {
 		guard let actionsForShouldChangeText: [(UITextView, NSRange, String) -> (Bool)] =
-			actionsForEvents[.textViewShouldChangeText] as? [(UITextView, NSRange, String) -> (Bool)] else {
-			return true
+			self.actionsForEvents[.textViewShouldChangeText] as? [(UITextView, NSRange, String) -> (Bool)] else {
+				return true
 		}
 		var shouldChange = true
 		for action in actionsForShouldChangeText {
@@ -156,7 +172,7 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textViewDidChange(_ textView: UITextView) {
-		guard let actionsForChangeText: [(UITextView) -> ()] = actionsForEvents[.textViewDidChangeText] as? [(UITextView) -> ()] else {
+		guard let actionsForChangeText: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidChangeText] as? [(UITextView) -> ()] else {
 			return
 		}
 		for action in actionsForChangeText {
@@ -165,7 +181,7 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textViewDidChangeSelection(_ textView: UITextView) {
-		guard let actionsForChangeSelection: [(UITextView) -> ()] = actionsForEvents[.textViewDidChangeSelection] as? [(UITextView) -> ()] else {
+		guard let actionsForChangeSelection: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidChangeSelection] as? [(UITextView) -> ()] else {
 			return
 		}
 		for action in actionsForChangeSelection {
@@ -174,11 +190,11 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textView(_ textView: UITextView,
-	                     shouldInteractWith URL: URL,
-	                     in characterRange: NSRange,
-	                     interaction: UITextItemInteraction) -> Bool {
+						 shouldInteractWith URL: URL,
+						 in characterRange: NSRange,
+						 interaction: UITextItemInteraction) -> Bool {
 		guard let actionsForShouldInteract: [(UITextView, URL, NSRange, UITextItemInteraction) -> (Bool)] =
-			actionsForEvents[.textViewShouldChangeText] as? [(UITextView, URL, NSRange, UITextItemInteraction) -> (Bool)] else {
+			self.actionsForEvents[.textViewShouldInteractWithURL] as? [(UITextView, URL, NSRange, UITextItemInteraction) -> (Bool)] else {
 				return true
 		}
 		var shouldInteract = true
@@ -189,11 +205,11 @@ extension TextViewDelegate: UITextViewDelegate {
 	}
 	
 	public func textView(_ textView: UITextView,
-	                     shouldInteractWith textAttachment: NSTextAttachment,
-	                     in characterRange: NSRange,
-	                     interaction: UITextItemInteraction) -> Bool {
+						 shouldInteractWith textAttachment: NSTextAttachment,
+						 in characterRange: NSRange,
+						 interaction: UITextItemInteraction) -> Bool {
 		guard let actionsForShouldInteract: [(UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> (Bool)] =
-			actionsForEvents[.textViewShouldChangeText] as? [(UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> (Bool)] else {
+			self.actionsForEvents[.textViewShouldInteractWithTextAttachment] as? [(UITextView, NSTextAttachment, NSRange, UITextItemInteraction) -> (Bool)] else {
 				return true
 		}
 		var shouldInteract = true

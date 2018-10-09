@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 public extension NSAttributedString {
-	
 	func font(at index: Int) -> UIFont? {
 		var range: NSRange = NSRange()
 		guard index < length else {
 			return nil
 		}
 		let currentAttributes = attributes(at: index, effectiveRange: &range)
-		let font: UIFont = currentAttributes[NSFontAttributeName] as! UIFont
+		let font: UIFont = currentAttributes[NSAttributedStringKey.font] as! UIFont
 		return font
 	}
 	
@@ -27,14 +26,14 @@ public extension NSAttributedString {
 			return false
 		}
 		let currentAttributes = attributes(at: index, effectiveRange: &range)
-		return currentAttributes[NSLinkAttributeName] != nil
+		return currentAttributes[NSAttributedStringKey.link] != nil
 	}
 	
 	func imagePresent(at index: Int) -> Bool {
 		guard index < length else {
 			return false
 		}
-		let attributeValue = attribute(NSAttachmentAttributeName, at: index, effectiveRange: nil)
+		let attributeValue = attribute(NSAttributedStringKey.attachment, at: index, effectiveRange: nil)
 		return attributeValue != nil
 	}
 	
@@ -49,7 +48,7 @@ public extension NSAttributedString {
 		let attrStringWithImage = NSAttributedString(attachment: textAttachment)
 		let mutableAttributedString = NSMutableAttributedString(attributedString: self)
 		mutableAttributedString.insert(attrStringWithImage, at: index)
-		mutableAttributedString.addAttribute(NSAttachmentAttributeName, value: textAttachment, range: NSRange(location: index, length: 1))
+		mutableAttributedString.addAttribute(NSAttributedStringKey.attachment, value: textAttachment, range: NSRange(location: index, length: 1))
 		return mutableAttributedString
 	}
 }
