@@ -10,11 +10,12 @@ import UIKit
 
 class TextViewImageInputHandler: ImageInputHandler {
 	let textView: UITextView
-	private var imagePickerManager: ImagePickerManager?
+	private let imagePickerProvider: ImagePickerProviderProtocol
 	private var imageBorderView = ImageBorderView.imageBorderView()
 
-	init(textView: UITextView) {
+	init(textView: UITextView, imagePickerProvider: ImagePickerProviderProtocol = ImagePickerManager()) {
 		self.textView = textView
+		self.imagePickerProvider = imagePickerProvider
 		self.imageBorderView.actionOnDeleteTap = {
 			let currentIndex = textView.currentTappedIndex!
 			let mutableAttributedString = NSMutableAttributedString(attributedString: textView.attributedText)
@@ -29,12 +30,17 @@ class TextViewImageInputHandler: ImageInputHandler {
 
 	func showImageInputView(completion: @escaping (UIImage?) -> ()) {
 		let view = CameraInputView.cameraInputView()
-		self.imagePickerManager = ImagePickerManager(with: UIViewController.topMostController!)
 		view.actionOnCameraTap = { [unowned self] in
-			self.imagePickerManager?.showImagePicker(.camera, completion: completion)
+			self.imagePickerProvider.showImagePicker(
+				.camera,
+				onViewController: UIViewController.topMostController!,
+				completion: completion)
 		}
 		view.actionOnLibraryTap = { [unowned self] in
-			self.imagePickerManager?.showImagePicker(.photoLibrary, completion: completion)
+			self.imagePickerProvider.showImagePicker(
+				.photoLibrary,
+				onViewController: UIViewController.topMostController!,
+				completion: completion)
 		}
 		textView.inputView = view
 		self.textView.reloadInputViews()

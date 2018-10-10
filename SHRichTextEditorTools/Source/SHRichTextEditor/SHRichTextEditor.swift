@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class SHRichTextEditor: NSObject, RichTextEditor {
-	internal let textView: UITextView
-	internal let toolBar = UIToolbar()
-	let textViewDelegate = TextViewDelegate()
-	var toolBarItems: [ToolBarItem] = [] {
+open class SHRichTextEditor: NSObject, RichTextEditor {
+	public let textView: UITextView
+	public let toolBar = UIToolbar()
+	public let textViewDelegate = TextViewDelegate()
+	public var toolBarItems: [ToolBarItem] = [] {
 		didSet {
 			self.configure()
 		}
@@ -23,11 +23,12 @@ class SHRichTextEditor: NSObject, RichTextEditor {
 	let toolBarDefaultTintColor: UIColor
 	private var defaultImageInputHandler: ImageInputHandler
 	private var defaultLinkInputHandler: LinkInputHandler
+
 	private static let defaultIndentationButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bullet")!)
 	private static let defaultItalicButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Italic")!)
 	private static let defaultBoldButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bold")!)
 
-	init(textView: UITextView,
+	public init(textView: UITextView,
 		 defaultTintColor: UIColor = .gray,
 		 selectedTintColor: UIColor = UIColor(red: 57/255.0, green: 200/255.0, blue: 129/255.0, alpha: 1)) {
 		self.textView = textView

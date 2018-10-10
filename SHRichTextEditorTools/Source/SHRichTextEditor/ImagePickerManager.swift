@@ -11,31 +11,33 @@ import Foundation
 import Foundation
 import UIKit
 
-typealias ImagePickerManagerCompletionBlock = (_ image: UIImage?) -> ()
+public typealias ImagePickerManagerCompletionBlock = (_ image: UIImage?) -> ()
 
-class ImagePickerManager: NSObject {
-	
+public protocol ImagePickerProviderProtocol {
+	func showImagePicker(_ type: UIImagePickerController.SourceType,
+						 onViewController: UIViewController,
+						 completion: @escaping ImagePickerManagerCompletionBlock)
+}
+
+open class ImagePickerManager: NSObject, ImagePickerProviderProtocol {
 	private var parentViewController: UIViewController?
 	fileprivate var actionOnImagePickerDismiss: ImagePickerManagerCompletionBlock?
 	fileprivate var imagePicker: UIImagePickerController?
-	
-	init(with parentViewController: UIViewController) {
-		super.init()
-		self.parentViewController = parentViewController
-	}
-	
-	func showImagePicker(_ type: UIImagePickerController.SourceType, completion: @escaping ImagePickerManagerCompletionBlock) {
+
+	public func showImagePicker(_ type: UIImagePickerController.SourceType,
+						 onViewController: UIViewController,
+						 completion: @escaping ImagePickerManagerCompletionBlock) {
 		self.actionOnImagePickerDismiss = completion
 		switch type {
 		case .camera:
 			if UIImagePickerController.isSourceTypeAvailable(.camera) {
 				self.imagePicker = self.imagePicker(for: .camera)
-				self.parentViewController?.present(self.imagePicker!, animated: true, completion: nil)
+				onViewController.present(self.imagePicker!, animated: true, completion: nil)
 			}
 		case .photoLibrary:
 			if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
 				self.imagePicker = self.imagePicker(for: .photoLibrary)
-				self.parentViewController?.present(self.imagePicker!, animated: true, completion: nil)
+				onViewController.present(self.imagePicker!, animated: true, completion: nil)
 			}
 		default:
 			break
@@ -54,13 +56,14 @@ class ImagePickerManager: NSObject {
 extension ImagePickerManager: UINavigationControllerDelegate { }
 
 extension ImagePickerManager: UIImagePickerControllerDelegate {
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+	public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 		let chosenImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
 		picker.dismiss(animated: true, completion: { [unowned self] in
 			self.actionOnImagePickerDismiss!(chosenImage)
 		})
 	}
-	func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+
+	public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 		picker.dismiss(animated: true, completion: { [unowned self] in
 			self.actionOnImagePickerDismiss!(nil)
 		})
