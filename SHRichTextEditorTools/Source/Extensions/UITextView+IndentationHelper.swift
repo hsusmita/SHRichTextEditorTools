@@ -40,7 +40,7 @@ extension UITextView: IndentationProtocol {
 		let attributedStringToAppend: NSMutableAttributedString = NSMutableAttributedString(string: indentationString)
 		let contentOffset = self.contentOffset
 		let selectedRange = selectedTextRange
-		attributedStringToAppend.addAttribute(NSAttributedStringKey.font,
+		attributedStringToAppend.addAttribute(NSAttributedString.Key.font,
 		                                      value: self.attributedText.font(at: index) ?? font!,
 		                                      range: NSRange(location: 0, length: attributedStringToAppend.length))
 		let updatedText: NSMutableAttributedString = NSMutableAttributedString(attributedString: attributedText)

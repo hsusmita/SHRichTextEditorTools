@@ -24,7 +24,7 @@ class ImagePickerManager: NSObject {
 		self.parentViewController = parentViewController
 	}
 	
-	func showImagePicker(_ type: UIImagePickerControllerSourceType, completion: @escaping ImagePickerManagerCompletionBlock) {
+	func showImagePicker(_ type: UIImagePickerController.SourceType, completion: @escaping ImagePickerManagerCompletionBlock) {
 		self.actionOnImagePickerDismiss = completion
 		switch type {
 		case .camera:
@@ -42,7 +42,7 @@ class ImagePickerManager: NSObject {
 		}
 	}
 	
-	func imagePicker(for type: UIImagePickerControllerSourceType) -> UIImagePickerController {
+	func imagePicker(for type: UIImagePickerController.SourceType) -> UIImagePickerController {
 		let picker = UIImagePickerController()
 		picker.sourceType = type
 		picker.delegate = self
@@ -54,8 +54,8 @@ class ImagePickerManager: NSObject {
 extension ImagePickerManager: UINavigationControllerDelegate { }
 
 extension ImagePickerManager: UIImagePickerControllerDelegate {
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		let chosenImage: UIImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+		let chosenImage: UIImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
 		picker.dismiss(animated: true, completion: { [unowned self] in
 			self.actionOnImagePickerDismiss!(chosenImage)
 		})

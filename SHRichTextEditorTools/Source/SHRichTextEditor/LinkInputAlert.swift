@@ -9,8 +9,8 @@
 import UIKit
 
 class LinkInputAlert: LinkInputHandler {
-	var linkAttributes: [NSAttributedStringKey: Any] {
-		return [NSAttributedStringKey.foregroundColor: UIColor.green]
+	var linkAttributes: [NSAttributedString.Key: Any] {
+		return [NSAttributedString.Key.foregroundColor: UIColor.green]
 	}
 
 	func showLinkInputView(completion: @escaping (URL?) -> ()) {

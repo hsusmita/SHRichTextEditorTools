@@ -19,7 +19,8 @@ public extension UITextView {
 	
 	var startOfLineIndex: Int? {
 		guard let selectedRange = selectedTextRange,
-			let startOfLinePosition = tokenizer.position(from: selectedRange.start, toBoundary: .line, inDirection: UITextStorageDirection.backward.rawValue) else {
+			let startOfLinePosition = tokenizer.position(from: selectedRange.start, toBoundary: .line, inDirection:
+				UITextDirection.storage(.backward)) else {
 				return nil
 		}
 		return offset(from: beginningOfDocument, to: startOfLinePosition)

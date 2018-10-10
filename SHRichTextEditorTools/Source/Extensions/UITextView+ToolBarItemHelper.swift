@@ -61,7 +61,7 @@ public extension UITextView {
 		countTextColor: UIColor,
 		textViewDelegate: TextViewDelegate) -> ToolBarButton {
 		let toolBarButton = ToolBarButton(
-			type: ToolBarButton.ButtonType.attributed(title: String(self.attributedText.length), attributes: [UIControlState.disabled.rawValue: [NSAttributedStringKey.foregroundColor: countTextColor]]),
+			type: ToolBarButton.ButtonType.attributed(title: String(self.attributedText.length), attributes: [UIControl.State.disabled.rawValue: [NSAttributedString.Key.foregroundColor: countTextColor]]),
 			actionOnTap: { _ in },
 			actionOnSelection: { _,_  in }
 		)
@@ -98,7 +98,7 @@ public extension UITextView {
 			guard let index = textView.currentTappedIndex else {
 				return
 			}
-			if let url = textView.attributedText.attribute(NSAttributedStringKey.link, at: index, effectiveRange: nil) as? URL {
+			if let url = textView.attributedText.attribute(NSAttributedString.Key.link, at: index, effectiveRange: nil) as? URL {
 				 UIApplication.shared.open(url)
 			}
 			toolBarButton.isSelected = textView.attributedText.linkPresent(at: index)

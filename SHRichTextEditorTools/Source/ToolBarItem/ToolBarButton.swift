@@ -14,7 +14,7 @@ ToolBarButton represents tapable elements to be shown in the toolbar.
 open class ToolBarButton: ToolBarItem {
 	public enum ButtonType {
 		case title(title: String)
-		case attributed(title: String, attributes: [UIControlState.RawValue: [NSAttributedStringKey : Any]])
+		case attributed(title: String, attributes: [UIControl.State.RawValue: [NSAttributedString.Key : Any]])
 		case image(image: UIImage)
 	}
 
@@ -43,7 +43,7 @@ open class ToolBarButton: ToolBarItem {
 		case .attributed(let title, let attributes):
 			self.barButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: #selector(performActionOnTap))
 			attributes.forEach { (key, value) in
-				let state = UIControlState(rawValue: key)
+				let state = UIControl.State(rawValue: key)
 				self.barButtonItem.setTitleTextAttributes(value, for: state)
 			}
 		case .image(let image):

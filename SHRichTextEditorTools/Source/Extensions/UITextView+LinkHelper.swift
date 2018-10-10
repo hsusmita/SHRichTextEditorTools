@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 public protocol LinkInputHandler: class {
-	var linkAttributes: [NSAttributedStringKey: Any] { get }
+	var linkAttributes: [NSAttributedString.Key: Any] { get }
 	func showLinkInputView(completion: @escaping (URL?) -> ())
 }
 
 extension UITextView {
-	public func addLink(link: URL, for range: NSRange, linkAttributes: [NSAttributedStringKey: Any]) {
+	public func addLink(link: URL, for range: NSRange, linkAttributes: [NSAttributedString.Key: Any]) {
 		guard range.location + range.length < self.attributedText.length else {
 			return
 		}
 		let mutableAttributedString = NSMutableAttributedString(attributedString: self.attributedText)
 		mutableAttributedString.addAttributes(linkAttributes, range: range)
-		mutableAttributedString.addAttribute(NSAttributedStringKey.link, value: link, range: range)
+		mutableAttributedString.addAttribute(NSAttributedString.Key.link, value: link, range: range)
 		self.attributedText = mutableAttributedString
 	}
 	
@@ -30,9 +30,9 @@ extension UITextView {
 			return
 		}
 		let mutableAttributedString = NSMutableAttributedString(attributedString: self.attributedText)
-		mutableAttributedString.removeAttribute(NSAttributedStringKey.link, range: range)
+		mutableAttributedString.removeAttribute(NSAttributedString.Key.link, range: range)
 		for (key, _) in self.linkTextAttributes {
-			mutableAttributedString.removeAttribute(NSAttributedStringKey(rawValue: key), range: range)
+			mutableAttributedString.removeAttribute(key, range: range)
 		}
 		self.attributedText = mutableAttributedString
 	}

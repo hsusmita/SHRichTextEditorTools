@@ -16,7 +16,7 @@ public extension NSAttributedString {
 			return nil
 		}
 		let currentAttributes = attributes(at: index, effectiveRange: &range)
-		let font: UIFont = currentAttributes[NSAttributedStringKey.font] as! UIFont
+		let font: UIFont = currentAttributes[NSAttributedString.Key.font] as! UIFont
 		return font
 	}
 	
@@ -26,14 +26,14 @@ public extension NSAttributedString {
 			return false
 		}
 		let currentAttributes = attributes(at: index, effectiveRange: &range)
-		return currentAttributes[NSAttributedStringKey.link] != nil
+		return currentAttributes[NSAttributedString.Key.link] != nil
 	}
 	
 	func imagePresent(at index: Int) -> Bool {
 		guard index < length else {
 			return false
 		}
-		let attributeValue = attribute(NSAttributedStringKey.attachment, at: index, effectiveRange: nil)
+		let attributeValue = attribute(NSAttributedString.Key.attachment, at: index, effectiveRange: nil)
 		return attributeValue != nil
 	}
 	
@@ -48,7 +48,7 @@ public extension NSAttributedString {
 		let attrStringWithImage = NSAttributedString(attachment: textAttachment)
 		let mutableAttributedString = NSMutableAttributedString(attributedString: self)
 		mutableAttributedString.insert(attrStringWithImage, at: index)
-		mutableAttributedString.addAttribute(NSAttributedStringKey.attachment, value: textAttachment, range: NSRange(location: index, length: 1))
+		mutableAttributedString.addAttribute(NSAttributedString.Key.attachment, value: textAttachment, range: NSRange(location: index, length: 1))
 		return mutableAttributedString
 	}
 }
