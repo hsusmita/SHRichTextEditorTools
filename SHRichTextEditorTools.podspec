@@ -13,8 +13,13 @@ Pod:: Spec.new do |spec|
     :tag => '2.0.2'
   }
   spec.ios.deployment_target = '10.0'
-  spec.source_files = 'SHRichTextEditorTools/Source/**/*.{swift, xib}'
+  spec.source_files = 'SHRichTextEditorTools/Source/**/*.{swift}'
   spec.resources = 'SHRichTextEditorTools/*.xcassets'
   spec.requires_arc = true
   spec.swift_version = '4.2'
+  spec.resource_bundles = {
+   'SHRichTextEditorTools' => [
+       'SHRichTextEditorTools/Source/**/*.{xib}'
+	]
+ }
 end
