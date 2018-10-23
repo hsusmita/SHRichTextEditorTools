@@ -18,7 +18,8 @@ class ImageBorderView: UIView {
 	}
 
 	static func imageBorderView() -> ImageBorderView {
-		return Bundle.main.loadNibNamed("ImageBorderView", owner: self, options: nil)?.first as! ImageBorderView
+		let podBundle = Bundle(for: ImageBorderView.classForCoder())
+		return podBundle.loadNibNamed("ImageBorderView", owner: nil, options: nil)?.first as! ImageBorderView
 	}
 
 	private func setBorder() {

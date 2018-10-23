@@ -14,8 +14,8 @@ public protocol ImageInputHandler: class {
 	var imageSelectionView: UIView? { get }
 }
 
-extension UITextView {
-	public func insertImage(image: UIImage, at index: Int) {
+public extension UITextView {
+	func insertImage(image: UIImage, at index: Int) {
 		let oldWidth = image.size.width
 		let scaleFactor = oldWidth / (self.frame.size.width - 20)
 		let spaceString = NSMutableAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: self.font ?? UIFont.systemFont(ofSize: 12.0)])
@@ -28,7 +28,7 @@ extension UITextView {
 		self.attributedText = finalAttributedString
 	}
 
-	public func selectImage(at index: Int, selectionView: UIView) {
+	func selectImage(at index: Int, selectionView: UIView) {
 		let glyphRange: NSRange = layoutManager.range(ofNominallySpacedGlyphsContaining: index)
 		var textRect: CGRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
 		textRect.origin.x += textContainerInset.left

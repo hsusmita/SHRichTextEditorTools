@@ -19,14 +19,14 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 		}
 	}
 
-	let toolBarSelectedTintColor: UIColor
-	let toolBarDefaultTintColor: UIColor
+	public let toolBarSelectedTintColor: UIColor
+	public let toolBarDefaultTintColor: UIColor
 	private var defaultImageInputHandler: ImageInputHandler
 	private var defaultLinkInputHandler: LinkInputHandler
 
-	private static let defaultIndentationButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bullet")!)
-	private static let defaultItalicButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Italic")!)
-	private static let defaultBoldButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bold")!)
+	public static let defaultIndentationButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bullet")!)
+	public static let defaultItalicButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Italic")!)
+	public static let defaultBoldButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bold")!)
 
 	public init(textView: UITextView,
 		 defaultTintColor: UIColor = .gray,
@@ -39,7 +39,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 		super.init()
 	}
 
-	func boldBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultBoldButton,
+	public func boldBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultBoldButton,
 					 actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
 			item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
@@ -51,7 +51,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	func italicBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultItalicButton,
+	public func italicBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultItalicButton,
 					   actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
 			item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
@@ -63,7 +63,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	func indentationBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultIndentationButton,
+	public func indentationBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultIndentationButton,
 							actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
 			item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
@@ -75,7 +75,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	func linkToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Link"),
+	public func linkToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Link"),
 						 actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
 						 linkInputHandler: LinkInputHandler? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
@@ -89,7 +89,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	func imageToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Image"),
+	public func imageToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Image"),
 						  actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
 						  imageInputHandler: ImageInputHandler? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
@@ -103,6 +103,6 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	let fixedSpaceToolBarItem = ToolBarSpacer(type: .fixed)
-	let flexibleSpaceToolBarItem = ToolBarSpacer(type: .flexible)
+	public let fixedSpaceToolBarItem = ToolBarSpacer(type: .fixed)
+	public let flexibleSpaceToolBarItem = ToolBarSpacer(type: .flexible)
 }

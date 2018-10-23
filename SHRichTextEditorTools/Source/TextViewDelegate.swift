@@ -88,7 +88,6 @@ open class TextViewDelegate: NSObject {
 	}
 	
 	private func observeTapChange() {
-		print(self)
 		NotificationCenter.default.addObserver(forName: UITextView.UITextViewTextDidChangeTap, object: nil,
 											   queue: OperationQueue.main) { [weak self] notification in
 												let textView = notification.object as! UITextView

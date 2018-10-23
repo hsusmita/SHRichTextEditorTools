@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ToolBarButton {
+public extension ToolBarButton {
 	static func configureBoldToolBarButton(
 		type: ToolBarButton.ButtonType,
 		actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
