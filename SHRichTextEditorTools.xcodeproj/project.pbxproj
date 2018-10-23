@@ -125,11 +125,8 @@
 		788C653D215CFDC700AF46A6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				788C653E215CFDC700AF46A6 /* RichTextEditor.swift */,
-				788C654D215CFDC700AF46A6 /* TextViewDelegate.swift */,
+				789DB391217F3D0400974D77 /* Core */,
 				788C655C215CFE0B00AF46A6 /* SHRichTextEditor */,
-				788C653F215CFDC700AF46A6 /* Extensions */,
-				788C6548215CFDC700AF46A6 /* ToolBarItem */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -188,6 +185,17 @@
 				788C6563215CFE0B00AF46A6 /* CameraInputView.swift */,
 			);
 			path = CameraInputView;
+			sourceTree = "<group>";
+		};
+		789DB391217F3D0400974D77 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				788C653E215CFDC700AF46A6 /* RichTextEditor.swift */,
+				788C654D215CFDC700AF46A6 /* TextViewDelegate.swift */,
+				788C6548215CFDC700AF46A6 /* ToolBarItem */,
+				788C653F215CFDC700AF46A6 /* Extensions */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		78B830291E5B0A32005B9057 = {

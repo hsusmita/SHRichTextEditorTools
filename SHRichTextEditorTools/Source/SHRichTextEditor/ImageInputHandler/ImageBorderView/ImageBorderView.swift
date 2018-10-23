@@ -18,8 +18,9 @@ class ImageBorderView: UIView {
 	}
 
 	static func imageBorderView() -> ImageBorderView {
-		let bundle = Bundle(for: ImageBorderView.classForCoder())
-		return UINib(nibName: "ImageBorderView", bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as! ImageBorderView
+		let bundle = Bundle(for: ImageBorderView.self)
+		return UINib(nibName: "ImageBorderView", bundle: bundle)
+			.instantiate(withOwner: self, options: nil)[0] as! ImageBorderView
 	}
 
 	private func setBorder() {
