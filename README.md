@@ -4,7 +4,7 @@ This is a collection of extensions which are helpful in building a rich text edi
 #Installation
 
 Add following lines in your pod file  
-pod 'SHRichTextEditorTools', '~> 2.0.7'
+pod 'SHRichTextEditorTools', '~> 2.0.8'
 
 #Usage
 
