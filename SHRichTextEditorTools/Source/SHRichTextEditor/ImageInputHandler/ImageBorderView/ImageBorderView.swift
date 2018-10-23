@@ -1,6 +1,6 @@
 //
 //  ImageBorderView.swift
-//  SHRichTextEditor
+//  SHRichTextEditorTools
 //
 //  Created by Susmita Horrow on 30/01/17.
 //  Copyright © 2017 hsusmita. All rights reserved.
@@ -18,8 +18,7 @@ class ImageBorderView: UIView {
 	}
 
 	static func imageBorderView() -> ImageBorderView {
-		let podBundle = Bundle(for: ImageBorderView.classForCoder())
-		return podBundle.loadNibNamed("ImageBorderView", owner: nil, options: nil)?.first as! ImageBorderView
+		return UINib(nibName: "ImageBorderView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! ImageBorderView
 	}
 
 	private func setBorder() {
