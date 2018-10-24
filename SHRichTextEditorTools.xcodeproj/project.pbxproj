@@ -28,7 +28,6 @@
 		788C6568215CFE0B00AF46A6 /* ImageBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6561215CFE0B00AF46A6 /* ImageBorderView.swift */; };
 		788C6569215CFE0B00AF46A6 /* CameraInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 788C6562215CFE0B00AF46A6 /* CameraInputView.xib */; };
 		788C656A215CFE0B00AF46A6 /* CameraInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C6563215CFE0B00AF46A6 /* CameraInputView.swift */; };
-		789DB39621802D5500974D77 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789DB39521802D5500974D77 /* BundleExtension.swift */; };
 		78AAA3881E5D70C5009CC1BF /* TextViewDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78AAA3871E5D70C5009CC1BF /* TextViewDelegateTests.swift */; };
 		78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830351E5B0A32005B9057 /* AppDelegate.swift */; };
 		78B830381E5B0A32005B9057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830371E5B0A32005B9057 /* ViewController.swift */; };
@@ -80,7 +79,6 @@
 		788C6561215CFE0B00AF46A6 /* ImageBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBorderView.swift; sourceTree = "<group>"; };
 		788C6562215CFE0B00AF46A6 /* CameraInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraInputView.xib; sourceTree = "<group>"; };
 		788C6563215CFE0B00AF46A6 /* CameraInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraInputView.swift; sourceTree = "<group>"; };
-		789DB39521802D5500974D77 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		78AAA3871E5D70C5009CC1BF /* TextViewDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewDelegateTests.swift; sourceTree = "<group>"; };
 		78B830321E5B0A32005B9057 /* SHRichTextEditorTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SHRichTextEditorTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B830351E5B0A32005B9057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				78D616D9216B6FDA00440E71 /* ImageInputHandler */,
 				788C655D215CFE0B00AF46A6 /* ImagePickerManager.swift */,
 				78D616DA216B73D500440E71 /* LinkInputAlert.swift */,
-				789DB39521802D5500974D77 /* BundleExtension.swift */,
 			);
 			path = SHRichTextEditor;
 			sourceTree = "<group>";
@@ -429,7 +426,6 @@
 				78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */,
 				788C6565215CFE0B00AF46A6 /* SHRichTextEditor.swift in Sources */,
 				788C6559215CFDC700AF46A6 /* ToolBarButtonExtensions.swift in Sources */,
-				789DB39621802D5500974D77 /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

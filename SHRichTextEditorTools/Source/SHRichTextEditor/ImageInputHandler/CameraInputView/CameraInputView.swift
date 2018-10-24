@@ -13,15 +13,9 @@ class CameraInputView: UIView {
 	var actionOnCameraTap: (() -> ())?
 	var actionOnLibraryTap: (() -> ())?
 
-	class func cameraInputView() -> CameraInputView? {
-		var nib: UINib?
-		if let bundle = Bundle.getResourcesBundle(for: CameraInputView.self) {
-			nib = UINib(nibName: "CameraInputView", bundle: bundle)
-		} else {
-			nib = UINib(nibName: "CameraInputView", bundle: nil)
-		}
-		return nib?.instantiate(withOwner: self, options: nil)[0] as? CameraInputView
-
+	class func cameraInputView() -> CameraInputView {
+		let nib = UINib(nibName: String(describing: CameraInputView.self), bundle: Bundle(for: self.classForCoder()))
+		return nib.instantiate(withOwner: self, options: nil).first as! CameraInputView
 	}
 	
 	@IBAction func didTapCamera(_ sender: Any) {

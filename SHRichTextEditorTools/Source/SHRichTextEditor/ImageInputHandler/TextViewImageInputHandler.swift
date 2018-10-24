@@ -11,7 +11,7 @@ import UIKit
 class TextViewImageInputHandler: ImageInputHandler {
 	let textView: UITextView
 	private let imagePickerProvider: ImagePickerProviderProtocol
-	private var imageBorderView = ImageBorderView.imageBorderView()!
+	private var imageBorderView = ImageBorderView.imageBorderView()
 
 	init(textView: UITextView, imagePickerProvider: ImagePickerProviderProtocol = ImagePickerManager()) {
 		self.textView = textView
@@ -31,9 +31,7 @@ class TextViewImageInputHandler: ImageInputHandler {
 	}
 
 	func showImageInputView(completion: @escaping (UIImage?) -> ()) {
-		guard let view = CameraInputView.cameraInputView() else {
-			return
-		}
+		let view = CameraInputView.cameraInputView()
 		view.actionOnCameraTap = { [unowned self] in
 			self.imagePickerProvider.showImagePicker(
 				.camera,
