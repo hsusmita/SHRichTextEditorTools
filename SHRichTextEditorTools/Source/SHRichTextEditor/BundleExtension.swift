@@ -11,7 +11,7 @@ import Foundation
 extension Bundle {
 	static func getResourcesBundle(for aClass: AnyClass) -> Bundle? {
 		let bundle = Bundle(for: aClass.self)
-		guard let resourcesBundleUrl = bundle.url(forResource: "Resources", withExtension: "bundle") else {
+		guard let resourcesBundleUrl = bundle.url(forResource: "SHRichTextEditorTools", withExtension: "bundle") else {
 			return nil
 		}
 		return Bundle(url: resourcesBundleUrl)
