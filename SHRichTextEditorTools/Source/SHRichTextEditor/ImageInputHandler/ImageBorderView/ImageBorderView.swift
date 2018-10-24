@@ -17,10 +17,14 @@ class ImageBorderView: UIView {
 		self.setBorder()
 	}
 
-	static func imageBorderView() -> ImageBorderView {
-		let bundle = Bundle(for: ImageBorderView.self)
-		return UINib(nibName: "ImageBorderView", bundle: bundle)
-			.instantiate(withOwner: self, options: nil)[0] as! ImageBorderView
+	static func imageBorderView() -> ImageBorderView? {
+		var nib: UINib?
+		if let bundle = Bundle.getResourcesBundle(for: ImageBorderView.self) {
+			nib = UINib(nibName: "ImageBorderView", bundle: bundle)
+		} else {
+			nib = UINib(nibName: "ImageBorderView", bundle: nil)
+		}
+		return nib?.instantiate(withOwner: self, options: nil)[0] as? ImageBorderView
 	}
 
 	private func setBorder() {

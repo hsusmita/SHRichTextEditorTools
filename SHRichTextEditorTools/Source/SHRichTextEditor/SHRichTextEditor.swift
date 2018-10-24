@@ -27,6 +27,8 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 	public static let defaultIndentationButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bullet")!)
 	public static let defaultItalicButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Italic")!)
 	public static let defaultBoldButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bold")!)
+	public static let defaultLinkButton = ToolBarButton.ButtonType.title(title: "Link")
+	public static let defaultImageButton = ToolBarButton.ButtonType.title(title: "Image")
 
 	public init(textView: UITextView,
 		 defaultTintColor: UIColor = .gray,
@@ -75,7 +77,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	public func linkToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Link"),
+	public func linkToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultLinkButton,
 						 actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
 						 linkInputHandler: LinkInputHandler? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
@@ -89,7 +91,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 			textViewDelegate: self.textViewDelegate)
 	}
 
-	public func imageToolBarItem(type: ToolBarButton.ButtonType = .title(title: "Image"),
+	public func imageToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultImageButton,
 						  actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
 						  imageInputHandler: ImageInputHandler? = nil) -> ToolBarItem {
 		let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in

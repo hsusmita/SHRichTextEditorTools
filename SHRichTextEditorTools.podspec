@@ -1,7 +1,7 @@
 Pod:: Spec.new do |spec|
   spec.platform     = 'ios', '10.0'
   spec.name         = 'SHRichTextEditorTools'
-  spec.version      = '2.0.10'
+  spec.version      = '3.0'
   spec.summary      = 'This is a collection of extensions which are helpful in configuring UIBarButtonItem to build a rich text editor'
   spec.author = {
     'Susmita Horrow' => 'susmita.horrow@gmail.com'
@@ -10,7 +10,7 @@ Pod:: Spec.new do |spec|
   spec.homepage         = 'https://github.com/hsusmita/SHRichTextEditorTools'
   spec.source = {
     :git => 'https://github.com/hsusmita/SHRichTextEditorTools.git',
-    :tag => '2.0.10'
+    :tag => '3.0'
   }
   spec.ios.deployment_target = '10.0'
   spec.requires_arc = true
@@ -23,9 +23,9 @@ Pod:: Spec.new do |spec|
 
   spec.subspec 'SHRichTextEditor' do |editor|
      editor.source_files = 'SHRichTextEditorTools/Source/SHRichTextEditor/**/*.{swift}'
-     editor.resources = 'SHRichTextEditorTools/*.xcassets'
+     editor.resources = 'SHRichTextEditorTools/Source/SHRichTextEditor/*.xcassets'
      editor.resource_bundles = {
-      'SHRichTextEditorTools' => ['SHRichTextEditorTools/Source/SHRichTextEditor/**/*.{xib}']
+      'Resources' => ['SHRichTextEditorTools/Source/SHRichTextEditor/**/*.{xib}', 'SHRichTextEditorTools/Source/SHRichTextEditor/*.xcassets']
      } 
      editor.dependency 'SHRichTextEditorTools/Core', '~> 2.0.10'
   end
