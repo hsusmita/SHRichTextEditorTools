@@ -28,7 +28,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
 	public static let defaultItalicButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Italic")!)
 	public static let defaultBoldButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Bold")!)
 	public static let defaultLinkButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Link")!)
-	public static let defaultImageButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Image")!)
+	public static let defaultImageButton = ToolBarButton.ButtonType.image(image: UIImage(named: "Picture")!)
 
 	public init(textView: UITextView,
 		 defaultTintColor: UIColor = .gray,

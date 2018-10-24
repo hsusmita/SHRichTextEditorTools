@@ -4,10 +4,10 @@ This is a collection of extensions which are helpful in building a rich text edi
 #Installation
 
 You can use the basic setup and create your own editor, then add following lines in your pod file  
-pod 'SHRichTextEditorTools/Core', '~> 3.0.5'
+pod 'SHRichTextEditorTools/Core', '~> 3.0.6'
 
 If you want to use preconfigured text editor, you have to add the following lines in your pod file
-pod 'SHRichTextEditorTools/SHRichTextEditor', '~> 3.0.5'
+pod 'SHRichTextEditorTools/SHRichTextEditor', '~> 3.0.6'
 
 
 #Usage
