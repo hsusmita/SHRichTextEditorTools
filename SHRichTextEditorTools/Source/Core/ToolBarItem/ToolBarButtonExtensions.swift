@@ -104,7 +104,7 @@ public extension ToolBarButton {
 		return toolBarButton
 	}
 
-	static public func configureImageToolBarButton(
+    static func configureImageToolBarButton(
 		type: ToolBarButton.ButtonType,
 		actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
 		imageInputHandler: ImageInputHandler,
@@ -140,7 +140,7 @@ public extension ToolBarButton {
 		return toolBarButton
 	}
 
-	static public func configureIndentationToolBarButton(
+    static func configureIndentationToolBarButton(
 		type: ToolBarButton.ButtonType,
 		actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
 		textView: UITextView,

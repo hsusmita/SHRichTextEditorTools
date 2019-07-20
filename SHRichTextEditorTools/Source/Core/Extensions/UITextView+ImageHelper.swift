@@ -38,7 +38,7 @@ public extension UITextView {
 		addSubview(selectionView)
 	}
 	
-	public func deselectImage(at index: Int, selectionView: UIView) {
+    func deselectImage(at index: Int, selectionView: UIView) {
 		selectionView.removeFromSuperview()
 	}
 }

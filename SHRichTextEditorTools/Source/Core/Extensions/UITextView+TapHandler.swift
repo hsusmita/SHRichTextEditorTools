@@ -15,7 +15,7 @@ public extension UITextView {
 	static let UITextViewTextDidChangeTap = Notification.Name(rawValue: "UITextViewTextDidChangeTap")
 	static let UITextViewTextDidLongPress = Notification.Name(rawValue: "UITextViewTextDidLongPress")
 
-	public var touchEnabled: Bool {
+    var touchEnabled: Bool {
 		get {
 			guard let gestureRecognizers = gestureRecognizers else {
 				return false
