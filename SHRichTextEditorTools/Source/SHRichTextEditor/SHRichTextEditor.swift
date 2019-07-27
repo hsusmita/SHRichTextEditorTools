@@ -149,6 +149,21 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
             textViewDelegate: self.textViewDelegate)
     }
     
-    public let fixedSpaceToolBarItem = ToolBarSpacer(type: .fixed)
+    public func toggleTextAndImageToolBarItem(textInputIcon: UIImage,
+                                              imageInputIcon: UIImage,
+                                              imageInputHandler: ImageInputHandler? = nil) -> ToolBarItem {
+        return ToolBarButton.configureToggleTextAndImageInputToolBarButton(
+            textInputIcon: textInputIcon,
+            imageInputIcon: imageInputIcon,
+            tintColor: self.toolBarDefaultTintColor,
+            imageInputHandler: imageInputHandler ?? self.textViewImageInputHandler,
+            textView: self.textView,
+            textViewDelegate: self.textViewDelegate
+        )
+    }
+    
+    public func fixedSpaceToolBarItem(width: CGFloat) -> ToolBarSpacer {
+        return ToolBarSpacer(type: .fixed(width: width))
+    }
     public let flexibleSpaceToolBarItem = ToolBarSpacer(type: .flexible)
 }

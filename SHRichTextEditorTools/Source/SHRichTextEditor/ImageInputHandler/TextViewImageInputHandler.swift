@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextViewImageInputHandler: ImageInputHandler {
+final class TextViewImageInputHandler: ImageInputHandler {
     let textView: UITextView
     var imagePickerProvider: ImagePickerProviderProtocol?
     private var imageBorderView = ImageBorderView.imageBorderView()

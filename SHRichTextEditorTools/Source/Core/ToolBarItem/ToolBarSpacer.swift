@@ -9,25 +9,26 @@
 import UIKit
 
 /**
-ToolBarSpacer represents spacer elements which can be used to manage layout of elements in the toolbar.
-*/
+ ToolBarSpacer represents spacer elements which can be used to manage layout of elements in the toolbar.
+ */
 
 open class ToolBarSpacer: ToolBarItem {
-	public enum SpacerType {
-		case fixed
-		case flexible
-	}
-
-	let type: SpacerType
-	public var barButtonItem = UIBarButtonItem()
-
-	init(type: SpacerType) {
-		self.type = type
-		switch self.type {
-		case .fixed:
-			self.barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-		case .flexible:
-			self.barButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		}
-	}
+    public enum SpacerType {
+        case fixed(width: CGFloat)
+        case flexible
+    }
+    
+    let type: SpacerType
+    public var barButtonItem = UIBarButtonItem()
+    
+    init(type: SpacerType) {
+        self.type = type
+        switch self.type {
+        case .fixed(let width):
+            self.barButtonItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+            self.barButtonItem.width = width
+        case .flexible:
+            self.barButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        }
+    }
 }
