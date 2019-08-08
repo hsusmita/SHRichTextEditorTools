@@ -8,13 +8,13 @@
 
 import UIKit
 
-final class TextViewImageInputHandler: ImageInputHandler {
+public class TextViewImageInputHandler: ImageInputHandler {
     let textView: UITextView
     var imagePickerProvider: ImagePickerProviderProtocol?
     private var imageBorderView = ImageBorderView.imageBorderView()
-    private(set) var cameraInputView =  CameraInputView.cameraInputView()
-
-    init(textView: UITextView) {
+    private(set) public var cameraInputView =  CameraInputView.cameraInputView()
+    
+    public init(textView: UITextView) {
         self.textView = textView
         self.imageBorderView.actionOnDeleteTap = {
             guard let currentIndex = textView.currentTappedIndex else {
@@ -26,11 +26,11 @@ final class TextViewImageInputHandler: ImageInputHandler {
         }
     }
     
-    var imageSelectionView: UIView? {
+    public var imageSelectionView: UIView? {
         return self.imageBorderView
     }
     
-    func showImageInputView(completion: @escaping (UIImage?) -> ()) {
+    public func showImageInputView(completion: @escaping (UIImage?) -> ()) {
         self.cameraInputView.actionOnCameraTap = { [unowned self] in
             self.imagePickerProvider?.showImagePicker(
                 .camera,
