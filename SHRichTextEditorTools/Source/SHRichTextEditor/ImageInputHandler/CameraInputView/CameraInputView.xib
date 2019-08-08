@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraInputView" customModule="DentalPlex" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraInputView" customModule="SHRichTextEditorTools" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -29,32 +28,32 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pc-Zm-PZV">
-                    <rect key="frame" x="68" y="159" width="52.5" height="20"/>
+                    <rect key="frame" x="67.5" y="159" width="53" height="17.5"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09p-jL-RMW">
-                    <rect key="frame" x="0.0" y="0.0" width="188" height="200"/>
+                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
                     <connections>
                         <action selector="didTapCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="K5P-lC-hje"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Library-Input" translatesAutoresizingMaskIntoConstraints="NO" id="26C-aw-W2a">
-                    <rect key="frame" x="245.5" y="64.5" width="70" height="70"/>
+                    <rect key="frame" x="246.5" y="65" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="g4y-gV-bC4"/>
                         <constraint firstAttribute="width" constant="70" id="haP-Tf-4pM"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDM-Tu-bZL">
-                    <rect key="frame" x="257" y="159" width="47" height="20"/>
+                    <rect key="frame" x="258" y="159" width="47" height="17.5"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pba-8e-QHb">
-                    <rect key="frame" x="187" y="0.0" width="188" height="200"/>
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
                     <connections>
                         <action selector="didTapLibrary:" destination="iN0-l3-epB" eventType="touchUpInside" id="g55-tL-Evo"/>
                     </connections>
@@ -80,6 +79,14 @@
                 <constraint firstItem="09p-jL-RMW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="y76-tG-e8g"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="cameraHeightConstraint" destination="6z5-cZ-c5m" id="CMy-HI-0hb"/>
+                <outlet property="cameraIconImageView" destination="tCA-5Z-hjF" id="Zuk-oY-2G4"/>
+                <outlet property="cameraWidthConstraint" destination="KYf-Xg-Urw" id="RfG-eN-IiL"/>
+                <outlet property="libraryHeightConstraint" destination="g4y-gV-bC4" id="QNc-Sr-3Vc"/>
+                <outlet property="libraryIconImageView" destination="26C-aw-W2a" id="Gbl-uN-p4y"/>
+                <outlet property="libraryWidthConstraint" destination="haP-Tf-4pM" id="hlx-az-OKi"/>
+            </connections>
             <point key="canvasLocation" x="-10" y="4"/>
         </view>
     </objects>

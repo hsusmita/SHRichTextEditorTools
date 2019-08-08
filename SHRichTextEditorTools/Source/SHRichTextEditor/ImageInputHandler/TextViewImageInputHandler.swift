@@ -12,7 +12,8 @@ final class TextViewImageInputHandler: ImageInputHandler {
     let textView: UITextView
     var imagePickerProvider: ImagePickerProviderProtocol?
     private var imageBorderView = ImageBorderView.imageBorderView()
-    
+    private(set) var cameraInputView =  CameraInputView.cameraInputView()
+
     init(textView: UITextView) {
         self.textView = textView
         self.imageBorderView.actionOnDeleteTap = {
@@ -30,20 +31,19 @@ final class TextViewImageInputHandler: ImageInputHandler {
     }
     
     func showImageInputView(completion: @escaping (UIImage?) -> ()) {
-        let view = CameraInputView.cameraInputView()
-        view.actionOnCameraTap = { [unowned self] in
+        self.cameraInputView.actionOnCameraTap = { [unowned self] in
             self.imagePickerProvider?.showImagePicker(
                 .camera,
                 onViewController: UIViewController.topMostController!,
                 completion: completion)
         }
-        view.actionOnLibraryTap = { [unowned self] in
+        self.cameraInputView.actionOnLibraryTap = { [unowned self] in
             self.imagePickerProvider?.showImagePicker(
                 .photoLibrary,
                 onViewController: UIViewController.topMostController!,
                 completion: completion)
         }
-        textView.inputView = view
+        self.textView.inputView = self.cameraInputView
         self.textView.reloadInputViews()
     }
 }

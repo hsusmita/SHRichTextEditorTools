@@ -15,7 +15,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     public let textViewDelegate = TextViewDelegate()
     public var toolBarItems: [ToolBarItem] = [] {
         didSet {
-            self.configure()
+            self.configure(tintColor: self.toolBarDefaultTintColor)
         }
     }
     public var imagePickerProvider: ImagePickerProviderProtocol? {

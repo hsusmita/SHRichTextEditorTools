@@ -68,6 +68,26 @@ public extension ToolBarButton {
         return toolBarButton
     }
     
+    static func configureRemainingCharacterCountToolBarButton(maximumCharacterCount: Int,
+                                                              textAttributes: [NSAttributedString.Key: Any],
+                                                              textView: UITextView,
+                                                              textViewDelegate: TextViewDelegate) -> ToolBarButton {
+        let toolBarButton = ToolBarButton(
+            type: ToolBarButton.ButtonType.attributed(
+                title: String(textView.attributedText.length),
+                attributes: [UIControl.State.disabled.rawValue: textAttributes]),
+            actionOnTap: { _ in },
+            actionOnSelection: { _,_  in }
+        )
+        toolBarButton.barButtonItem.setTitleTextAttributes(textAttributes, for: .normal)
+        toolBarButton.barButtonItem.isEnabled = false
+        textViewDelegate.registerDidChangeText { (textView) in
+            let count = max(0, maximumCharacterCount - textView.attributedText.length)
+            toolBarButton.barButtonItem.title = String(count)
+        }
+        return toolBarButton
+    }
+    
     static func configureLinkToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
