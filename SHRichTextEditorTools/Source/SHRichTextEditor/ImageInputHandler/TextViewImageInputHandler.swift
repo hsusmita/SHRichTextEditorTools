@@ -46,4 +46,10 @@ public class TextViewImageInputHandler: ImageInputHandler {
         self.textView.inputView = self.cameraInputView
         self.textView.reloadInputViews()
     }
+
+    public func clearImageSelection() {
+        if let imageSelectionView = self.imageSelectionView {
+            self.textView.clearImageSelection(selectionView: imageSelectionView)
+        }
+    }
 }

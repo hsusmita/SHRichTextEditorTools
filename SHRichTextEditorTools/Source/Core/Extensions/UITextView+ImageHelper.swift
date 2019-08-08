@@ -42,4 +42,8 @@ public extension UITextView {
     func deselectImage(at index: Int, selectionView: UIView) {
         selectionView.removeFromSuperview()
     }
+    
+    func clearImageSelection(selectionView: UIView) {
+        selectionView.removeFromSuperview()
+    }
 }

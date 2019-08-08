@@ -166,4 +166,10 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         return ToolBarSpacer(type: .fixed(width: width))
     }
     public let flexibleSpaceToolBarItem = ToolBarSpacer(type: .flexible)
+
+    public func clear() {
+        self.textView.text = nil
+        self.textView.attributedText = nil
+        self.textViewImageInputHandler.clearImageSelection()
+    }
 }
