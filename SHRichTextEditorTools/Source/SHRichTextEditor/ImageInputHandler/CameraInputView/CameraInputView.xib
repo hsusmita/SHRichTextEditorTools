@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Input" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-5Z-hjF">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Input" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-5Z-hjF">
                     <rect key="frame" x="49" y="65" width="90" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="6z5-cZ-c5m"/>
@@ -28,7 +28,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pc-Zm-PZV">
-                    <rect key="frame" x="67.5" y="159" width="53" height="17.5"/>
+                    <rect key="frame" x="67.5" y="159" width="53" height="20"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                         <action selector="didTapCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="K5P-lC-hje"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Library-Input" translatesAutoresizingMaskIntoConstraints="NO" id="26C-aw-W2a">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Library-Input" translatesAutoresizingMaskIntoConstraints="NO" id="26C-aw-W2a">
                     <rect key="frame" x="246.5" y="65" width="70" height="70"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="g4y-gV-bC4"/>
@@ -47,7 +47,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDM-Tu-bZL">
-                    <rect key="frame" x="258" y="159" width="47" height="17.5"/>
+                    <rect key="frame" x="258" y="159" width="47" height="20"/>
                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

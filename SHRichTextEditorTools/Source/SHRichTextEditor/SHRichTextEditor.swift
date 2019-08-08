@@ -27,7 +27,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     public let toolBarSelectedTintColor: UIColor
     public let toolBarDefaultTintColor: UIColor
     private var defaultLinkInputHandler: LinkInputHandler
-    private var textViewImageInputHandler: TextViewImageInputHandler
+    public var textViewImageInputHandler: TextViewImageInputHandler
     
     public static let defaultBoldButtonType: ToolBarButton.ButtonType = {
         let bundle = Bundle(for: SHRichTextEditor.classForCoder())
