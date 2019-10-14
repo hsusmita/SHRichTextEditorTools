@@ -85,6 +85,9 @@ public extension ToolBarButton {
             let count = max(0, maximumCharacterCount - textView.attributedText.length)
             toolBarButton.barButtonItem.title = String(count)
         }
+        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
+            return textView.text.count + (text.count - range.length) <= maximumCharacterCount
+        }
         return toolBarButton
     }
     
