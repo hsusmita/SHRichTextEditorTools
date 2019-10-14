@@ -103,11 +103,17 @@ public extension ToolBarButton {
             }
         }
         let actionOnTap: (ToolBarButton) -> Void = { item in
+            if textView.selectedRange.location == NSNotFound || textView.selectedRange.length == 0 {
+                return
+            }
             linkInputHandler.showLinkInputView(completion: actionOnCompletion)
         }
         let toolBarButton = ToolBarButton(type: type, actionOnTap: actionOnTap, actionOnSelection: actionOnSelection)
         let actionOnTapChange: (UITextView) -> () = { (textView) in
             guard let index = textView.currentTappedIndex else {
+                return
+            }
+            if textView.selectedRange.location == NSNotFound || textView.selectedRange.length == 0 {
                 return
             }
             toolBarButton.isSelected = textView.attributedText.linkPresent(at: index)
