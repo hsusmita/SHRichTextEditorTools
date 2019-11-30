@@ -22,6 +22,7 @@ open class TextViewDelegate: NSObject {
 		case textViewDidLongPress
 		case textViewShouldInteractWithURL
 		case textViewShouldInteractWithTextAttachment
+        case textViewDidInsertImage
 	}
 	
 	fileprivate var actionsForEvents: [Event: [Any]] = [:]
@@ -78,6 +79,11 @@ open class TextViewDelegate: NSObject {
 	open func registerDidLongPress(with handler: @escaping (UITextView) -> ()) {
 		self.register(event: .textViewDidLongPress, handler: handler)
 	}
+
+    open func registerDidInsertImage(with handler: @escaping (UITextView, Int, UIImage) -> ()) {
+        self.register(event: .textViewDidInsertImage, handler: handler)
+    }
+    
 	
 	private func register(event: Event, handler: Any) {
 		if let _ = actionsForEvents[event] {
@@ -178,7 +184,17 @@ extension TextViewDelegate: UITextViewDelegate {
 			action(textView)
 		}
 	}
-	
+
+    public func textViewDidInsertImage(_ textView: UITextView, index: Int, image: UIImage) {
+        guard let actionsForDidInsertImage: [(UITextView, Int, UIImage) -> (Void)] =
+            self.actionsForEvents[.textViewDidInsertImage] as? [(UITextView, Int, UIImage) -> (Void)] else {
+                return
+        }
+        for action in actionsForDidInsertImage {
+            action(textView, index, image)
+        }
+    }
+
 	public func textViewDidChangeSelection(_ textView: UITextView) {
 		guard let actionsForChangeSelection: [(UITextView) -> ()] = self.actionsForEvents[.textViewDidChangeSelection] as? [(UITextView) -> ()] else {
 			return

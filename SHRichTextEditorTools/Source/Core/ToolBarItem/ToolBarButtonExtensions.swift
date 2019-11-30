@@ -142,7 +142,7 @@ public extension ToolBarButton {
             imageInputHandler.showImageInputView(completion: { image in
                 if let image = image, let index = textView.currentCursorPosition {
                     textView.insertImage(image: image, at: index)
-                    textViewDelegate.textViewDidChange(textView)
+                    textViewDelegate.textViewDidInsertImage(textView, index: index, image: image)
                 }
             })
         }
@@ -185,7 +185,7 @@ public extension ToolBarButton {
                 imageInputHandler.showImageInputView(completion: { image in
                     if let image = image, let index = textView.currentCursorPosition {
                         textView.insertImage(image: image, at: index)
-                        textViewDelegate.textViewDidChange(textView)
+                        textViewDelegate.textViewDidInsertImage(textView, index: index, image: image)
                     }
                 })
                 item.barButtonItem.image = textInputIcon

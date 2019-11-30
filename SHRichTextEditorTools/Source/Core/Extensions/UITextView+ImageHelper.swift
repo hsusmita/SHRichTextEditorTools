@@ -18,13 +18,14 @@ public extension UITextView {
     func insertImage(image: UIImage, at index: Int) {
         let oldWidth = image.size.width
         let scaleFactor = oldWidth / (self.frame.size.width - 10)
-        let spaceString = NSMutableAttributedString(string: "   ", attributes: [NSAttributedString.Key.font: self.font ?? UIFont.systemFont(ofSize: 12.0)])
+        let spaceString = NSMutableAttributedString(string: "\n", attributes: self.typingAttributes)
         let finalAttributedString = NSMutableAttributedString(attributedString: spaceString)
         guard let attributedStringWithImage = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor) else {
             return
         }
         finalAttributedString.append(attributedStringWithImage)
         finalAttributedString.append(spaceString)
+        finalAttributedString.addAttributes(self.typingAttributes, range: NSRange(location: 0, length: finalAttributedString.length))
         self.attributedText = finalAttributedString
     }
     
