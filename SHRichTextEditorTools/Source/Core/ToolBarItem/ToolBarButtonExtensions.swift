@@ -100,6 +100,7 @@ public extension ToolBarButton {
         )
         toolBarButton.barButtonItem.tintColor = countTextColor
         toolBarButton.barButtonItem.isEnabled = false
+        toolBarButton.barButtonItem.title = String(textView.attributedText.length)
         textViewDelegate.registerDidChangeText { (textView) in
             toolBarButton.barButtonItem.title = String(textView.attributedText.length)
         }
@@ -119,6 +120,7 @@ public extension ToolBarButton {
         )
         toolBarButton.barButtonItem.setTitleTextAttributes(textAttributes, for: .normal)
         toolBarButton.barButtonItem.isEnabled = false
+        toolBarButton.barButtonItem.title = String(max(0, maximumCharacterCount - textView.attributedText.length))
         textViewDelegate.registerDidChangeText { (textView) in
             let count = max(0, maximumCharacterCount - textView.attributedText.length)
             toolBarButton.barButtonItem.title = String(count)
