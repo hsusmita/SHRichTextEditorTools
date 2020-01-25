@@ -95,11 +95,14 @@ public extension ToolBarButton {
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
         linkInputHandler: LinkInputHandler,
+        linkTapHandler: @escaping ((URL) -> ()),
         textView: UITextView,
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
         let actionOnCompletion = { (url: URL?) -> Void in
             if let url = url {
-                textView.addLink(link: url, for: textView.selectedRange, linkAttributes: linkInputHandler.linkAttributes)
+                if UIApplication.shared.canOpenURL(url) {
+                    textView.addLink(link: url, for: textView.selectedRange, linkAttributes: linkInputHandler.linkAttributes)
+                }
             }
         }
         let actionOnTap: (ToolBarButton) -> Void = { item in
@@ -124,11 +127,22 @@ public extension ToolBarButton {
                 return
             }
             if let url = textView.attributedText.attribute(NSAttributedString.Key.link, at: index, effectiveRange: nil) as? URL {
-                UIApplication.shared.open(url)
+                linkTapHandler(url)
             }
             toolBarButton.isSelected = textView.attributedText.linkPresent(at: index)
         }
         textViewDelegate.registerDidLongPress(with: actionOnLongPress)
+        let currentTypingAttributes = textView.typingAttributes
+        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
+            if text == " " || text == "\n" {
+                let attributedString = NSMutableAttributedString(string: text, attributes: currentTypingAttributes)
+                textView.textStorage.insert(attributedString, at: range.location)
+                let cursor = NSRange(location: textView.selectedRange.location + 1, length: 0)
+                textView.selectedRange = cursor
+                return false
+            }
+            return true
+        }
         return toolBarButton
     }
     

@@ -123,14 +123,19 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     
     public func linkToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultLinkButtonType,
                                 actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
-                                linkInputHandler: LinkInputHandler? = nil) -> ToolBarItem {
+                                linkInputHandler: LinkInputHandler? = nil,
+                                linkTapHandler: ((URL) -> Void)? = nil) -> ToolBarItem {
         let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
             item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
+        }
+        let defaultTapAction:((URL) -> Void) = { url in
+            UIApplication.shared.open(url)
         }
         return ToolBarButton.configureLinkToolBarButton(
             type: type,
             actionOnSelection: actionOnSelection ?? defaultAction,
             linkInputHandler: linkInputHandler ?? self.defaultLinkInputHandler,
+            linkTapHandler: linkTapHandler ?? defaultTapAction,
             textView: self.textView,
             textViewDelegate: self.textViewDelegate)
     }
@@ -166,7 +171,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         return ToolBarSpacer(type: .fixed(width: width))
     }
     public let flexibleSpaceToolBarItem = ToolBarSpacer(type: .flexible)
-
+    
     public func clear() {
         self.textView.text = nil
         self.textView.attributedText = nil
