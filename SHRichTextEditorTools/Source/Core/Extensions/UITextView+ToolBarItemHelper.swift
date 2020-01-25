@@ -9,30 +9,6 @@
 import UIKit
 
 public extension UITextView {
-    func configureBoldToolBarButton(
-        type: ToolBarButton.ButtonType,
-        actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
-        textViewDelegate: TextViewDelegate) -> ToolBarButton {
-        let toolBarButton = ToolBarButton(
-            type: type,
-            actionOnTap: { [unowned self] item in
-                guard let index = self.currentCursorPosition,
-                    !self.attributedText.imagePresent(at: index) else {
-                        return
-                }
-                self.toggleBoldface(self)
-            },
-            actionOnSelection: actionOnSelection
-        )
-        textViewDelegate.registerDidTapChange(with: { textView in
-            guard let index = textView.currentTappedIndex else {
-                return
-            }
-            toolBarButton.isSelected = textView.isCharacterBold(for: index)
-        })
-        return toolBarButton
-    }
-    
     func configureItalicToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
