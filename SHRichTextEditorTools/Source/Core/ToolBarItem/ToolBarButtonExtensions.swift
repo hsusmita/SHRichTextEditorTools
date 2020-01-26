@@ -174,7 +174,10 @@ public extension ToolBarButton {
         textViewDelegate.registerDidLongPress(with: actionOnLongPress)
         let currentTypingAttributes = textView.typingAttributes
         textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
-            if text == " " || text == "\n" {
+            guard (range.location - 1) >= 0 else {
+                return true
+            }
+            if (text == " " || text == "\n") && textView.attributedText.linkPresent(at: range.location - 1) {
                 let attributedString = NSMutableAttributedString(string: text, attributes: currentTypingAttributes)
                 textView.textStorage.insert(attributedString, at: range.location)
                 let cursor = NSRange(location: textView.selectedRange.location + 1, length: 0)
