@@ -24,7 +24,7 @@ class ImageBorderView: UIView {
 
 	private func setBorder() {
 		self.layer.borderColor = self.tintColor.cgColor
-		self.layer.borderWidth = 3.0
+		self.layer.borderWidth = 4.0
 		self.deleteButton.backgroundColor = self.tintColor
 	}
 

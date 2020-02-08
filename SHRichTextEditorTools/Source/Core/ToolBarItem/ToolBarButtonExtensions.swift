@@ -260,26 +260,21 @@ public extension ToolBarButton {
                 if let selectionView = imageInputHandler.imageSelectionView {
                     textView.selectImage(at: index, selectionView: selectionView)
                 }
-                toolBarButton.isSelected = true
-                toolBarButton.barButtonItem.image = textInputIcon
-                imageInputHandler.showImageInputView(completion: { image in
-                    if let image = image, let index = textView.currentCursorPosition {
-                        textView.insertImage(image: image, at: index)
-                        textViewDelegate.textViewDidChange(textView)
-                    }
-                })
             } else {
                 if let selectionView = imageInputHandler.imageSelectionView {
                     textView.deselectImage(at: index, selectionView: selectionView)
                 }
-                toolBarButton.isSelected = false
-                toolBarButton.barButtonItem.image = imageInputIcon
             }
         }
-        textViewDelegate.registerDidChangeText(with: updateState)
+        textViewDelegate.registerDidChangeText(with: { (textView) in
+            if let selectionView = imageInputHandler.imageSelectionView {
+                textView.clearImageSelection(selectionView: selectionView)
+            }
+        })
         textViewDelegate.registerDidTapChange(with: updateState)
         return toolBarButton
     }
+    
     static func configureIndentationToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),

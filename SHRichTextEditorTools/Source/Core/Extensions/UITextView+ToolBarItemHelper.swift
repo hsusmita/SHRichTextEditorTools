@@ -80,39 +80,14 @@ public extension UITextView {
             }
         }
         textViewDelegate.registerDidTapChange(with: updateState)
-        return toolBarButton
-    }
-    
-    func configureIndentationToolBarButton(
-        type: ToolBarButton.ButtonType,
-        actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
-        textViewDelegate: TextViewDelegate) -> ToolBarButton {
-        let toolBarButton = ToolBarButton(
-            type: type,
-            actionOnTap: { [unowned self] _ in
-                guard let index = self.currentCursorPosition,
-                    !self.attributedText.imagePresent(at: index) else {
-                        return
-                }
-                self.toggleIndentation()
-            },
-            actionOnSelection: actionOnSelection
-        )
-        
-        let updateState: (UITextView) -> () = { (textView) in
-            guard let index = textView.currentTappedIndex else {
-                return
-            }
-            toolBarButton.isSelected = textView.indentationPresent(at: index)
-        }
         textViewDelegate.registerShouldChangeText { (textView, range, replacementText) -> (Bool) in
-            guard replacementText == "\n" && range.location >= 0 && textView.indentationPresent(at: range.location - 1) else {
-                return true
+            if replacementText == "\n" {
+                if let selectionView = imageInputHandler.imageSelectionView {
+                    textView.clearImageSelection(selectionView: selectionView)
+                }
             }
-            textView.addIndentation(at: range.location)
-            return false
+            return true
         }
-        textViewDelegate.registerDidTapChange(with: updateState)
         return toolBarButton
     }
 }
