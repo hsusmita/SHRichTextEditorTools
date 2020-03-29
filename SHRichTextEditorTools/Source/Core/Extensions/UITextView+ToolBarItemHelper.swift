@@ -52,12 +52,13 @@ public extension UITextView {
     func configureImageToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
+        imageAttachmentBounds: CGRect,
         imageInputHandler: ImageInputHandler,
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
         let actionOnTap: (ToolBarButton) -> Void = { [unowned self] item in
             imageInputHandler.showImageInputView(completion: { image in
                 if let image = image, let index = self.currentCursorPosition {
-                    self.insertImage(image: image, at: index)
+                    self.insertImage(image: image, at: index, attachmentBounds: imageAttachmentBounds)
                 }
             })
         }

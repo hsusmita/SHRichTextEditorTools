@@ -192,13 +192,14 @@ public extension ToolBarButton {
     static func configureImageToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
+        imageAttachmentBounds: CGRect,
         imageInputHandler: ImageInputHandler,
         textView: UITextView,
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
         let actionOnTap: (ToolBarButton) -> Void = { item in
             imageInputHandler.showImageInputView(completion: { image in
                 if let image = image, let index = textView.currentCursorPosition {
-                    textView.insertImage(image: image, at: index)
+                    textView.insertImage(image: image, at: index, attachmentBounds: imageAttachmentBounds)
                     textViewDelegate.textViewDidInsertImage(textView, index: index, image: image)
                 }
             })
@@ -230,6 +231,7 @@ public extension ToolBarButton {
         textInputIcon: UIImage,
         imageInputIcon: UIImage,
         tintColor: UIColor,
+        imageAttachmentBounds: CGRect,
         imageInputHandler: ImageInputHandler,
         textView: UITextView,
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
@@ -241,7 +243,7 @@ public extension ToolBarButton {
             } else {
                 imageInputHandler.showImageInputView(completion: { image in
                     if let image = image, let index = textView.currentCursorPosition {
-                        textView.insertImage(image: image, at: index)
+                        textView.insertImage(image: image, at: index, attachmentBounds: imageAttachmentBounds)
                         textViewDelegate.textViewDidInsertImage(textView, index: index, image: image)
                     }
                 })

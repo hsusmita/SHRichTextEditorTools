@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,76 +14,82 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraInputView" customModule="SHRichTextEditorTools" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="Nla-cE-zRh" customClass="CameraInputView" customModule="SHRichTextEditorTools" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Input" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-5Z-hjF">
-                    <rect key="frame" x="49" y="65" width="90" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="70" id="6z5-cZ-c5m"/>
-                        <constraint firstAttribute="width" constant="90" id="KYf-Xg-Urw"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pc-Zm-PZV">
-                    <rect key="frame" x="67.5" y="159" width="53" height="20"/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09p-jL-RMW">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qvw-cp-fLC">
+                    <rect key="frame" x="49" y="50" width="90" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera-Input" translatesAutoresizingMaskIntoConstraints="NO" id="FVN-gg-BkB">
+                            <rect key="frame" x="0.0" y="0.0" width="90" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="Bo9-07-6u2"/>
+                                <constraint firstAttribute="height" constant="70" id="qiu-ZQ-WkS"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bu5-NF-rXa">
+                            <rect key="frame" x="18.5" y="80" width="52.5" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="926-4a-pXK">
                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="200"/>
                     <connections>
-                        <action selector="didTapCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="K5P-lC-hje"/>
+                        <action selector="didTapCamera:" destination="Nla-cE-zRh" eventType="touchUpInside" id="OGd-tM-9LP"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Library-Input" translatesAutoresizingMaskIntoConstraints="NO" id="26C-aw-W2a">
-                    <rect key="frame" x="246.5" y="65" width="70" height="70"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="70" id="g4y-gV-bC4"/>
-                        <constraint firstAttribute="width" constant="70" id="haP-Tf-4pM"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDM-Tu-bZL">
-                    <rect key="frame" x="258" y="159" width="47" height="20"/>
-                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pba-8e-QHb">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qUA-Ch-zJY">
+                    <rect key="frame" x="246.5" y="50" width="70" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Library-Input" translatesAutoresizingMaskIntoConstraints="NO" id="9u6-Ew-bEQ">
+                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="ccd-PY-WxX"/>
+                                <constraint firstAttribute="height" constant="70" id="mHT-Bc-oFF"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7N-7K-pb3">
+                            <rect key="frame" x="11.5" y="80" width="47" height="20"/>
+                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlO-qS-FJq">
                     <rect key="frame" x="187.5" y="0.0" width="187.5" height="200"/>
                     <connections>
-                        <action selector="didTapLibrary:" destination="iN0-l3-epB" eventType="touchUpInside" id="g55-tL-Evo"/>
+                        <action selector="didTapLibrary:" destination="Nla-cE-zRh" eventType="touchUpInside" id="OoZ-pY-UwO"/>
                     </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="09p-jL-RMW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3ab-YJ-RlD"/>
-                <constraint firstItem="26C-aw-W2a" firstAttribute="centerX" secondItem="Pba-8e-QHb" secondAttribute="centerX" id="BMG-ga-qlT"/>
-                <constraint firstAttribute="bottom" secondItem="Pba-8e-QHb" secondAttribute="bottom" id="GFl-Oz-hZj"/>
-                <constraint firstItem="tCA-5Z-hjF" firstAttribute="centerY" secondItem="09p-jL-RMW" secondAttribute="centerY" id="LXL-fZ-PaO"/>
-                <constraint firstItem="Pba-8e-QHb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VIC-VF-amj"/>
-                <constraint firstItem="Pba-8e-QHb" firstAttribute="width" secondItem="09p-jL-RMW" secondAttribute="width" id="XxJ-fz-yth"/>
-                <constraint firstItem="gDM-Tu-bZL" firstAttribute="centerY" secondItem="5Pc-Zm-PZV" secondAttribute="centerY" id="aOW-xb-Wgj"/>
-                <constraint firstItem="gDM-Tu-bZL" firstAttribute="centerX" secondItem="26C-aw-W2a" secondAttribute="centerX" id="bkr-6K-b5F"/>
-                <constraint firstAttribute="trailing" secondItem="Pba-8e-QHb" secondAttribute="trailing" id="bss-LZ-5vW"/>
-                <constraint firstAttribute="bottom" secondItem="09p-jL-RMW" secondAttribute="bottom" id="e0P-Am-adP"/>
-                <constraint firstItem="09p-jL-RMW" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:2" id="lxv-Cs-uRg"/>
-                <constraint firstItem="26C-aw-W2a" firstAttribute="centerY" secondItem="Pba-8e-QHb" secondAttribute="centerY" id="mY3-P4-qbg"/>
-                <constraint firstItem="5Pc-Zm-PZV" firstAttribute="top" secondItem="tCA-5Z-hjF" secondAttribute="bottom" constant="24" id="qKe-3S-4IJ"/>
-                <constraint firstItem="tCA-5Z-hjF" firstAttribute="centerX" secondItem="09p-jL-RMW" secondAttribute="centerX" id="rDk-pJ-jR3"/>
-                <constraint firstItem="5Pc-Zm-PZV" firstAttribute="centerX" secondItem="tCA-5Z-hjF" secondAttribute="centerX" id="t4b-R0-6ed"/>
-                <constraint firstItem="09p-jL-RMW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="y76-tG-e8g"/>
+                <constraint firstAttribute="bottom" secondItem="hlO-qS-FJq" secondAttribute="bottom" id="Gfi-Pe-oBe"/>
+                <constraint firstItem="926-4a-pXK" firstAttribute="leading" secondItem="Nla-cE-zRh" secondAttribute="leading" id="LoI-o3-Mh1"/>
+                <constraint firstItem="Qvw-cp-fLC" firstAttribute="centerX" secondItem="926-4a-pXK" secondAttribute="centerX" id="Sk3-pT-Oeh"/>
+                <constraint firstItem="qUA-Ch-zJY" firstAttribute="centerY" secondItem="hlO-qS-FJq" secondAttribute="centerY" id="U3h-eV-1hn"/>
+                <constraint firstItem="926-4a-pXK" firstAttribute="top" secondItem="Nla-cE-zRh" secondAttribute="top" id="VjJ-1q-igW"/>
+                <constraint firstItem="qUA-Ch-zJY" firstAttribute="centerX" secondItem="hlO-qS-FJq" secondAttribute="centerX" id="WgC-my-XgD"/>
+                <constraint firstAttribute="trailing" secondItem="hlO-qS-FJq" secondAttribute="trailing" id="azV-zE-BoW"/>
+                <constraint firstItem="926-4a-pXK" firstAttribute="width" secondItem="Nla-cE-zRh" secondAttribute="width" multiplier="1:2" id="hr6-pr-jls"/>
+                <constraint firstAttribute="bottom" secondItem="926-4a-pXK" secondAttribute="bottom" id="lrx-A2-KPA"/>
+                <constraint firstItem="Qvw-cp-fLC" firstAttribute="centerY" secondItem="926-4a-pXK" secondAttribute="centerY" id="mh5-MD-oDL"/>
+                <constraint firstItem="hlO-qS-FJq" firstAttribute="top" secondItem="Nla-cE-zRh" secondAttribute="top" id="tmK-JO-5vV"/>
+                <constraint firstItem="hlO-qS-FJq" firstAttribute="width" secondItem="926-4a-pXK" secondAttribute="width" id="y28-VM-HVq"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="cameraHeightConstraint" destination="6z5-cZ-c5m" id="CMy-HI-0hb"/>
-                <outlet property="cameraIconImageView" destination="tCA-5Z-hjF" id="Zuk-oY-2G4"/>
-                <outlet property="cameraWidthConstraint" destination="KYf-Xg-Urw" id="RfG-eN-IiL"/>
-                <outlet property="libraryHeightConstraint" destination="g4y-gV-bC4" id="QNc-Sr-3Vc"/>
-                <outlet property="libraryIconImageView" destination="26C-aw-W2a" id="Gbl-uN-p4y"/>
-                <outlet property="libraryWidthConstraint" destination="haP-Tf-4pM" id="hlx-az-OKi"/>
+                <outlet property="cameraHeightConstraint" destination="qiu-ZQ-WkS" id="mez-GT-ySQ"/>
+                <outlet property="cameraIconImageView" destination="FVN-gg-BkB" id="D5W-JM-hza"/>
+                <outlet property="cameraWidthConstraint" destination="Bo9-07-6u2" id="dhR-jK-E0f"/>
+                <outlet property="libraryHeightConstraint" destination="mHT-Bc-oFF" id="Kfm-75-iHe"/>
+                <outlet property="libraryIconImageView" destination="9u6-Ew-bEQ" id="h7B-Vj-yDR"/>
+                <outlet property="libraryWidthConstraint" destination="ccd-PY-WxX" id="LqJ-73-yEF"/>
             </connections>
             <point key="canvasLocation" x="-10" y="4"/>
         </view>

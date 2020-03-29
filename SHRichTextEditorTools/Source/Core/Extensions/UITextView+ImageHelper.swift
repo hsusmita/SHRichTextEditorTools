@@ -15,10 +15,10 @@ public protocol ImageInputHandler: class {
 }
 
 public extension UITextView {
-    func insertImage(image: UIImage, at index: Int) {
+    func insertImage(image: UIImage, at index: Int, attachmentBounds: CGRect) {
         let oldWidth = image.size.width
         let scaleFactor = oldWidth / (self.frame.size.width)
-        guard let attributedStringWithImage = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor) else {
+        guard let attributedStringWithImage = self.attributedText.insert(image, at: index, scaleFactor: scaleFactor, attachmentBounds: attachmentBounds) else {
             return
         }
         let finalAttributedString = NSMutableAttributedString(attributedString: attributedStringWithImage)

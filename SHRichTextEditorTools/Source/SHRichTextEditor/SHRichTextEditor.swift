@@ -142,6 +142,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     
     public func imageToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultImageButtonType,
                                  actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
+                                 imageAttachmentBounds: CGRect,
                                  imageInputHandler: ImageInputHandler? = nil) -> ToolBarItem {
         let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
             item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
@@ -149,6 +150,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         return ToolBarButton.configureImageToolBarButton(
             type: type,
             actionOnSelection: actionOnSelection ?? defaultAction,
+            imageAttachmentBounds: imageAttachmentBounds,
             imageInputHandler: imageInputHandler ?? self.textViewImageInputHandler,
             textView: self.textView,
             textViewDelegate: self.textViewDelegate)
@@ -156,11 +158,13 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     
     public func toggleTextAndImageToolBarItem(textInputIcon: UIImage,
                                               imageInputIcon: UIImage,
+                                              imageAttachmentBounds: CGRect,
                                               imageInputHandler: ImageInputHandler? = nil) -> ToolBarItem {
         return ToolBarButton.configureToggleTextAndImageInputToolBarButton(
             textInputIcon: textInputIcon,
             imageInputIcon: imageInputIcon,
             tintColor: self.toolBarDefaultTintColor,
+            imageAttachmentBounds: imageAttachmentBounds,
             imageInputHandler: imageInputHandler ?? self.textViewImageInputHandler,
             textView: self.textView,
             textViewDelegate: self.textViewDelegate

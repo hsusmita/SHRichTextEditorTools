@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
 			self.textEditor.indentationBarItem(),
 			self.textEditor.flexibleSpaceToolBarItem,
 			self.textEditor.linkToolBarItem(),
-			self.textEditor.imageToolBarItem(),
+            self.textEditor.imageToolBarItem(imageAttachmentBounds: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 20, height: UIScreen.main.bounds.height - 20)),
 			wordCountToolBarItem
 		]
 	}
