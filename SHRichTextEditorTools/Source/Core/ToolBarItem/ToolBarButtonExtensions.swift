@@ -273,6 +273,14 @@ public extension ToolBarButton {
                 textView.clearImageSelection(selectionView: selectionView)
             }
         })
+        
+        textViewDelegate.registerDidBeginEditing(with: { (textView) in
+            if textView.inputView != nil {
+                textView.inputView = nil
+                textView.reloadInputViews()
+                toolBarButton.barButtonItem.image = imageInputIcon
+            }
+        })
         textViewDelegate.registerDidTapChange(with: updateState)
         return toolBarButton
     }
