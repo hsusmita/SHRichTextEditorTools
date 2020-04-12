@@ -22,6 +22,7 @@ public extension ToolBarButton {
                         return
                 }
                 textView.toggleBoldface(textView)
+                item.isSelected = !item.isSelected
         },
             actionOnSelection: actionOnSelection
         )
@@ -58,8 +59,10 @@ public extension ToolBarButton {
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
         let toolBarButton = ToolBarButton(
             type: type,
-            actionOnTap: { _ in
+            actionOnTap: { item in
                 textView.toggleItalics(textView)
+                item.isSelected = !item.isSelected
+
         },
             actionOnSelection: actionOnSelection
         )
@@ -152,26 +155,6 @@ public extension ToolBarButton {
             }
         }
         let toolBarButton = ToolBarButton(type: type, actionOnTap: actionOnTap, actionOnSelection: actionOnSelection)
-        let actionOnTapChange: (UITextView) -> () = { (textView) in
-            guard let index = textView.currentTappedIndex else {
-                return
-            }
-            if textView.selectedRange.location == NSNotFound || textView.selectedRange.length == 0 {
-                return
-            }
-            toolBarButton.isSelected = textView.attributedText.linkPresent(at: index)
-        }
-        textViewDelegate.registerDidTapChange(with: actionOnTapChange)
-        let actionOnLongPress: (UITextView) -> () = { (textView) in
-            guard let index = textView.currentTappedIndex else {
-                return
-            }
-            if let url = textView.attributedText.attribute(NSAttributedString.Key.link, at: index, effectiveRange: nil) as? URL {
-                linkTapHandler(url)
-            }
-            toolBarButton.isSelected = textView.attributedText.linkPresent(at: index)
-        }
-        textViewDelegate.registerDidLongPress(with: actionOnLongPress)
         let currentTypingAttributes = textView.typingAttributes
         textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
             guard (range.location - 1) >= 0 else {
