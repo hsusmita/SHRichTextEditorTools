@@ -130,7 +130,7 @@ public extension ToolBarButton {
         }
         return toolBarButton
     }
-    
+
     static func configureLinkToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
@@ -138,18 +138,18 @@ public extension ToolBarButton {
         linkTapHandler: @escaping ((URL) -> ()),
         textView: UITextView,
         textViewDelegate: TextViewDelegate) -> ToolBarButton {
-        let actionOnCompletion = { (url: URL?) -> Void in
-            if let url = url {
-                if UIApplication.shared.canOpenURL(url) {
-                    textView.addLink(link: url, for: textView.selectedRange, linkAttributes: linkInputHandler.linkAttributes)
-                }
-            }
-        }
         let actionOnTap: (ToolBarButton) -> Void = { item in
             if textView.selectedRange.location == NSNotFound || textView.selectedRange.length == 0 {
                 return
             }
-            linkInputHandler.showLinkInputView(completion: actionOnCompletion)
+            let range = textView.selectedRange
+            linkInputHandler.showLinkInputView { url in
+                if let url = url {
+                    if UIApplication.shared.canOpenURL(url) {
+                        textView.addLink(link: url, for: range, linkAttributes: linkInputHandler.linkAttributes)
+                    }
+                }
+            }
         }
         let toolBarButton = ToolBarButton(type: type, actionOnTap: actionOnTap, actionOnSelection: actionOnSelection)
         let actionOnTapChange: (UITextView) -> () = { (textView) in
@@ -185,6 +185,11 @@ public extension ToolBarButton {
                 return false
             }
             return true
+        }
+        
+        textViewDelegate.registerShouldInteractURL { (textView, url, range, _) -> Bool in
+            linkTapHandler(url)
+            return false
         }
         return toolBarButton
     }
