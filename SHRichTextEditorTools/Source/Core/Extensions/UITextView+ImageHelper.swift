@@ -30,8 +30,8 @@ public extension UITextView {
         let glyphRange: NSRange = layoutManager.range(ofNominallySpacedGlyphsContaining: index)
         var textRect: CGRect = layoutManager.boundingRect(forGlyphRange: glyphRange, in: textContainer)
         if let attachment = self.attributedText.attribute(NSAttributedString.Key.attachment, at: index, longestEffectiveRange: nil, in: NSRange(location: 0, length: self.attributedText.length)) as? NSTextAttachment {
-            textRect.size.height = attachment.bounds.height
-            textRect.size.width = attachment.bounds.width
+            textRect.size.height = min(attachment.bounds.height, self.bounds.height)
+            textRect.size.width = min(attachment.bounds.width, self.bounds.width)
             if let image = attachment.image,
                 attachment.bounds.height == 0 {
                 textRect.size.height = image.size.height
