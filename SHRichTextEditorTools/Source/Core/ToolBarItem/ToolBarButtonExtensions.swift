@@ -17,12 +17,7 @@ public extension ToolBarButton {
         let toolBarButton = ToolBarButton(
             type: type,
             actionOnTap: { item in
-                guard let index = textView.currentCursorPosition,
-                    !textView.attributedText.imagePresent(at: index) else {
-                        return
-                }
-                textView.toggleBoldface(textView)
-                item.isSelected = !item.isSelected
+             textView.toggleBoldface(textView)
         },
             actionOnSelection: actionOnSelection
         )
@@ -32,12 +27,12 @@ public extension ToolBarButton {
             }
             return true
         }
-        textViewDelegate.registerDidChangeText { textView in
-            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
-                return
-            }
-            toolBarButton.isSelected = textView.isCharacterBold(for: index - 1)
-        }
+//        textViewDelegate.registerDidChangeText { textView in
+//            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+//                return
+//            }
+//            toolBarButton.isSelected = textView.isCharacterBold(for: index - 1) || textView.isCharacterBold(for: index)
+//        }
         textViewDelegate.registerDidTapChange(with: { textView in
             guard let index = textView.currentTappedIndex else {
                 return
@@ -61,8 +56,6 @@ public extension ToolBarButton {
             type: type,
             actionOnTap: { item in
                 textView.toggleItalics(textView)
-                item.isSelected = !item.isSelected
-
         },
             actionOnSelection: actionOnSelection
         )
@@ -72,12 +65,12 @@ public extension ToolBarButton {
             }
             return true
         }
-        textViewDelegate.registerDidChangeText { textView in
-            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
-                return
-            }
-            toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1)
-        }
+//        textViewDelegate.registerDidChangeText { textView in
+//            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+//                return
+//            }
+//            toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1) || textView.isCharacterItalic(for: index)
+//        }
         textViewDelegate.registerDidTapChange(with: { textView in
             guard let index = textView.currentTappedIndex else {
                 return
