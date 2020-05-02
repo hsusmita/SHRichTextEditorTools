@@ -31,6 +31,15 @@ public extension ToolBarButton {
                 toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
             }
         }
+        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
+            if text == "\n" {
+                if let index = textView.currentCursorPosition, index - 1 >= 0, textView.isCharacterBold(for: index - 1) {
+                    textView.toggleBoldface(textView)
+                    toolBarButton.isSelected = false
+                }
+            }
+            return true
+        }
         if (!shouldHideOnNoSelection) {
             textViewDelegate.registerDidChangeText { textView in
                 guard let index = textView.currentCursorPosition, index - 1 > 0 else {
@@ -44,6 +53,9 @@ public extension ToolBarButton {
                 }
                 toolBarButton.isSelected = textView.isCharacterBold(for: index - 1) || textView.isCharacterBold(for: index)
             }
+        } else {
+            toolBarButton.barButtonItem.tintColor = UIColor.clear
+            toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
         }
         return toolBarButton
     }
@@ -70,6 +82,15 @@ public extension ToolBarButton {
                 toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
             }
         }
+        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
+            if text == "\n" {
+                if let index = textView.currentCursorPosition, index - 1 >= 0, textView.isCharacterItalic(for: index - 1) {
+                    textView.toggleItalics(textView)
+                    toolBarButton.isSelected = false
+                }
+            }
+            return true
+        }
         if (!shouldHideOnNoSelection) {
             textViewDelegate.registerDidChangeText { textView in
                 guard let index = textView.currentCursorPosition, index - 1 > 0 else {
@@ -83,6 +104,9 @@ public extension ToolBarButton {
                 }
                 toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1) || textView.isCharacterItalic(for: index)
             }
+        } else {
+            toolBarButton.barButtonItem.tintColor = UIColor.clear
+            toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
         }
         return toolBarButton
     }
@@ -175,6 +199,8 @@ public extension ToolBarButton {
                 toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
                 toolBarButton.barButtonItem.tintColor = textView.selectedRange.length > 0 ? textView.tintColor : UIColor.clear
             }
+            toolBarButton.barButtonItem.tintColor = textView.selectedRange.length > 0 ? textView.tintColor : UIColor.clear
+            toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
         }
         return toolBarButton
     }
