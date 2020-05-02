@@ -86,7 +86,8 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     }
     
     public func boldBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultBoldButtonType,
-                            actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil) -> ToolBarItem {
+                            actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
+                            shouldHideOnNoSelection: Bool = true) -> ToolBarItem {
         let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
             item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
         }
@@ -94,11 +95,13 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
             type: type,
             actionOnSelection: actionOnSelection ?? defaultAction,
             textView: self.textView,
-            textViewDelegate: self.textViewDelegate)
+            textViewDelegate: self.textViewDelegate,
+            shouldHideOnNoSelection: shouldHideOnNoSelection)
     }
     
     public func italicBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultItalicButtonType,
-                              actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil) -> ToolBarItem {
+                              actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
+                              shouldHideOnNoSelection: Bool = true) -> ToolBarItem {
         let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
             item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
         }
@@ -106,7 +109,8 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
             type: type,
             actionOnSelection: actionOnSelection ?? defaultAction,
             textView: self.textView,
-            textViewDelegate: self.textViewDelegate)
+            textViewDelegate: self.textViewDelegate,
+            shouldHideOnNoSelection: shouldHideOnNoSelection)
     }
     
     public func indentationBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultIndentationButtonType,
@@ -124,7 +128,8 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     public func linkToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultLinkButtonType,
                                 actionOnSelection: ((ToolBarButton, Bool) -> Void)? = nil,
                                 linkInputHandler: LinkInputHandler? = nil,
-                                linkTapHandler: ((URL) -> Void)? = nil) -> ToolBarItem {
+                                linkTapHandler: ((URL) -> Void)? = nil,
+                                shouldHideOnNoSelection: Bool = true) -> ToolBarItem {
         let defaultAction: ((ToolBarButton, Bool) -> Void) = { [unowned self] (item, isSelected) in
             item.barButtonItem.tintColor = isSelected ? self.toolBarSelectedTintColor : self.toolBarDefaultTintColor
         }
@@ -137,7 +142,8 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
             linkInputHandler: linkInputHandler ?? self.defaultLinkInputHandler,
             linkTapHandler: linkTapHandler ?? defaultTapAction,
             textView: self.textView,
-            textViewDelegate: self.textViewDelegate)
+            textViewDelegate: self.textViewDelegate,
+            shouldHideOnNoSelection: shouldHideOnNoSelection)
     }
     
     public func imageToolBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultImageButtonType,

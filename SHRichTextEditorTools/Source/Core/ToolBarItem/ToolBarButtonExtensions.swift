@@ -13,37 +13,38 @@ public extension ToolBarButton {
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
         textView: UITextView,
-        textViewDelegate: TextViewDelegate) -> ToolBarButton {
+        textViewDelegate: TextViewDelegate,
+        shouldHideOnNoSelection: Bool) -> ToolBarButton {
         let toolBarButton = ToolBarButton(
             type: type,
             actionOnTap: { item in
-             textView.toggleBoldface(textView)
+                textView.toggleBoldface(textView)
         },
             actionOnSelection: actionOnSelection
         )
-        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
-            if text == "\n" {
-                toolBarButton.isSelected = false
+        textViewDelegate.registerDidChangeSelection { textView in
+            if (textView.selectedRange.length > 0) {
+                toolBarButton.isSelected = textView.isCharacterBold(for: textView.currentCursorPosition ?? textView.selectedRange.location)
+                toolBarButton.barButtonItem.isEnabled = true
+            } else if (shouldHideOnNoSelection) {
+                toolBarButton.barButtonItem.tintColor = UIColor.clear
+                toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
             }
-            return true
         }
-//        textViewDelegate.registerDidChangeText { textView in
-//            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
-//                return
-//            }
-//            toolBarButton.isSelected = textView.isCharacterBold(for: index - 1) || textView.isCharacterBold(for: index)
-//        }
-        textViewDelegate.registerDidTapChange(with: { textView in
-            guard let index = textView.currentTappedIndex else {
-                return
+        if (!shouldHideOnNoSelection) {
+            textViewDelegate.registerDidChangeText { textView in
+                guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+                    return
+                }
+                toolBarButton.isSelected = textView.isCharacterBold(for: index - 1) || textView.isCharacterBold(for: index)
             }
-            let prevIndex = index - 1
-            if prevIndex > 0 {
-                toolBarButton.isSelected = textView.isCharacterBold(for: index) || textView.isCharacterBold(for: prevIndex)
-            } else {
-                toolBarButton.isSelected = textView.isCharacterBold(for: index)
+            textViewDelegate.registerDidTapChange { textView in
+                guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+                    return
+                }
+                toolBarButton.isSelected = textView.isCharacterBold(for: index - 1) || textView.isCharacterBold(for: index)
             }
-        })
+        }
         return toolBarButton
     }
     
@@ -51,7 +52,8 @@ public extension ToolBarButton {
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
         textView: UITextView,
-        textViewDelegate: TextViewDelegate) -> ToolBarButton {
+        textViewDelegate: TextViewDelegate,
+        shouldHideOnNoSelection: Bool) -> ToolBarButton {
         let toolBarButton = ToolBarButton(
             type: type,
             actionOnTap: { item in
@@ -59,29 +61,29 @@ public extension ToolBarButton {
         },
             actionOnSelection: actionOnSelection
         )
-        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
-            if text == "\n" {
-                toolBarButton.isSelected = false
+        textViewDelegate.registerDidChangeSelection { textView in
+            if (textView.selectedRange.length > 0) {
+                toolBarButton.isSelected = textView.isCharacterItalic(for: textView.currentCursorPosition ?? textView.selectedRange.location)
+                toolBarButton.barButtonItem.isEnabled = true
+            } else if (shouldHideOnNoSelection) {
+                toolBarButton.barButtonItem.tintColor = UIColor.clear
+                toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
             }
-            return true
         }
-//        textViewDelegate.registerDidChangeText { textView in
-//            guard let index = textView.currentCursorPosition, index - 1 > 0 else {
-//                return
-//            }
-//            toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1) || textView.isCharacterItalic(for: index)
-//        }
-        textViewDelegate.registerDidTapChange(with: { textView in
-            guard let index = textView.currentTappedIndex else {
-                return
+        if (!shouldHideOnNoSelection) {
+            textViewDelegate.registerDidChangeText { textView in
+                guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+                    return
+                }
+                toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1) || textView.isCharacterItalic(for: index)
             }
-            let prevIndex = index - 1
-            if prevIndex > 0 {
-                toolBarButton.isSelected = textView.isCharacterItalic(for: index) || textView.isCharacterItalic(for: prevIndex)
-            } else {
-                toolBarButton.isSelected = textView.isCharacterItalic(for: index)
+            textViewDelegate.registerDidTapChange { textView in
+                guard let index = textView.currentCursorPosition, index - 1 > 0 else {
+                    return
+                }
+                toolBarButton.isSelected = textView.isCharacterItalic(for: index - 1) || textView.isCharacterItalic(for: index)
             }
-        })
+        }
         return toolBarButton
     }
     
@@ -126,14 +128,15 @@ public extension ToolBarButton {
         }
         return toolBarButton
     }
-
+    
     static func configureLinkToolBarButton(
         type: ToolBarButton.ButtonType,
         actionOnSelection: @escaping ((ToolBarButton, Bool) -> Void),
         linkInputHandler: LinkInputHandler,
         linkTapHandler: @escaping ((URL) -> ()),
         textView: UITextView,
-        textViewDelegate: TextViewDelegate) -> ToolBarButton {
+        textViewDelegate: TextViewDelegate,
+        shouldHideOnNoSelection: Bool) -> ToolBarButton {
         let actionOnTap: (ToolBarButton) -> Void = { item in
             if textView.selectedRange.location == NSNotFound || textView.selectedRange.length == 0 {
                 return
@@ -166,6 +169,12 @@ public extension ToolBarButton {
         textViewDelegate.registerShouldInteractURL { (textView, url, range, _) -> Bool in
             linkTapHandler(url)
             return false
+        }
+        if (shouldHideOnNoSelection) {
+            textViewDelegate.registerDidChangeSelection { textView in
+                toolBarButton.barButtonItem.isEnabled = textView.selectedRange.length > 0
+                toolBarButton.barButtonItem.tintColor = textView.selectedRange.length > 0 ? textView.tintColor : UIColor.clear
+            }
         }
         return toolBarButton
     }
