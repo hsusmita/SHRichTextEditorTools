@@ -170,6 +170,11 @@ public extension ToolBarButton {
                 if let url = url {
                     if UIApplication.shared.canOpenURL(url) {
                         textView.addLink(link: url, for: range, linkAttributes: linkInputHandler.linkAttributes)
+                        if let newPosition = textView.position(from: textView.beginningOfDocument,
+                                                               offset: range.location + range.length) {
+                            textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
+                        }
+
                     }
                 }
             }
