@@ -83,6 +83,10 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         self.textViewImageInputHandler = TextViewImageInputHandler(textView: self.textView)
         self.defaultLinkInputHandler = LinkInputAlert()
         super.init()
+        
+        if #available(iOS 13.0, *) {
+            handleLinkPreview()
+        }
     }
     
     public func boldBarItem(type: ToolBarButton.ButtonType = SHRichTextEditor.defaultBoldButtonType,
@@ -186,5 +190,30 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         self.textView.text = nil
         self.textView.attributedText = nil
         self.textViewImageInputHandler.clearImageSelection()
+    }
+    
+    private func handleLinkPreview() {
+        textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
+            if text == "\n" {
+                if let urlString = textView.currentWord, urlString.isValidURL {
+                    if #available(iOS 13.0, *) {
+                        textView.inserLPView(for: urlString)
+                    }
+                }
+            } else if text == "" && range.length > 0 {
+                if textView.attributedText.imagePresent(at: textView.currentCursorPosition!-1) {
+                    if let selectionView = self.textViewImageInputHandler.imageSelectionView {
+                        if textView.subviews.contains(selectionView) {
+                            textView.clearImageSelection(selectionView: selectionView)
+                            return true
+                        } else {
+                            textView.selectImage(at: textView.currentCursorPosition!-1, selectionView: selectionView)
+                            return false
+                        }
+                    }
+                }
+            }
+            return true
+        }
     }
 }

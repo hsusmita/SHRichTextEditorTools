@@ -14,6 +14,8 @@ final class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        textView.text = ""
+        textView.becomeFirstResponder()
 		self.textEditor = SHRichTextEditor(textView: self.textView)
 		let wordCountToolBarItem = ToolBarButton.configureWordCountToolBarButton(
 			countTextColor: UIColor.blue,
