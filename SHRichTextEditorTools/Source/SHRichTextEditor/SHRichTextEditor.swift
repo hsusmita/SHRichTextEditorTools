@@ -200,7 +200,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
                         textView.inserLPView(for: urlString)
                     }
                 }
-            } else if text == "" && range.length > 0 {
+            } else if text == "" && range.length > 0 && textView.currentCursorPosition != nil, textView.currentCursorPosition! > 0 {
                 if textView.attributedText.imagePresent(at: textView.currentCursorPosition!-1) {
                     if let selectionView = self.textViewImageInputHandler.imageSelectionView {
                         if textView.subviews.contains(selectionView) {
