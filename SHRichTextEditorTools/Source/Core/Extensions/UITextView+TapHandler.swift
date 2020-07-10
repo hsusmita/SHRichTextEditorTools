@@ -63,6 +63,10 @@ public extension UITextView {
 		}
 
 	}
+    
+    func updateTappedIndex(to index: Int) {
+        self.currentTappedIndex = index
+    }
 }
 
 extension UITextView: UIGestureRecognizerDelegate {

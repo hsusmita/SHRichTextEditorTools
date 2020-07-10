@@ -29,7 +29,7 @@ class ImageBorderView: UIView {
 	}
 
 	@IBAction private func didTapDeleteButton(_ sender: Any) {
-		self.removeFromSuperview()
+        self.removeFromSuperview()
 		self.actionOnDeleteTap?()
 	}
 }

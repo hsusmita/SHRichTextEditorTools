@@ -69,4 +69,14 @@ public extension UITextView {
 		let characterIndex = layoutManager.characterIndex(for: finalLocation, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
 		return characterIndex
 	}
+    
+    var currentWord: String? {
+        guard let regex = try? NSRegularExpression(pattern: "\\S+$") else { return nil }
+        let textRange = NSRange(location: 0, length: selectedRange.location)
+        if let range = regex.firstMatch(in: text, range: textRange)?.range {
+            guard let finalRange = Range(range, in: text) else { return nil }
+            return String(text[finalRange])
+        }
+        return nil
+    }
 }

@@ -38,6 +38,9 @@
 		78B830561E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B830551E5B0A32005B9057 /* SHRichTextEditorToolsUITests.swift */; };
 		78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D616D7216B6F6E00440E71 /* TextViewImageInputHandler.swift */; };
 		78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D616DA216B73D500440E71 /* LinkInputAlert.swift */; };
+		A866BE4B24A9D063009E4012 /* UITextView+LinkPresentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */; };
+		A866BE4F24A9EC78009E4012 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866BE4E24A9EC78009E4012 /* String+Helper.swift */; };
+		A8CD9C3124B8E90C0037EDE7 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		78B830571E5B0A32005B9057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78D616D7216B6F6E00440E71 /* TextViewImageInputHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewImageInputHandler.swift; sourceTree = "<group>"; };
 		78D616DA216B73D500440E71 /* LinkInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInputAlert.swift; sourceTree = "<group>"; };
+		A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+LinkPresentationHelper.swift"; sourceTree = "<group>"; };
+		A866BE4E24A9EC78009E4012 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
+		A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,9 @@
 				788C6545215CFDC700AF46A6 /* UITextView+ToolBarItemHelper.swift */,
 				788C6546215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift */,
 				788C6547215CFDC700AF46A6 /* NSAttributedString+Helper.swift */,
+				A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */,
+				A866BE4E24A9EC78009E4012 /* String+Helper.swift */,
+				A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -329,7 +338,7 @@
 				TargetAttributes = {
 					78B830311E5B0A32005B9057 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = HP3Q6K3LF3;
+						DevelopmentTeam = AMM55DP523;
 						LastSwiftMigration = 1130;
 						ProvisioningStyle = Automatic;
 					};
@@ -407,6 +416,7 @@
 				788C6555215CFDC700AF46A6 /* UIFont+SymbolicTraits.swift in Sources */,
 				788C654E215CFDC700AF46A6 /* RichTextEditor.swift in Sources */,
 				788C6551215CFDC700AF46A6 /* UITextView+Helpers.swift in Sources */,
+				A866BE4F24A9EC78009E4012 /* String+Helper.swift in Sources */,
 				788C6558215CFDC700AF46A6 /* ToolBarSpacer.swift in Sources */,
 				788C6556215CFDC700AF46A6 /* NSAttributedString+Helper.swift in Sources */,
 				788C6553215CFDC700AF46A6 /* UITextView+TapHandler.swift in Sources */,
@@ -416,12 +426,14 @@
 				788C6550215CFDC700AF46A6 /* UITextView+IndentationHelper.swift in Sources */,
 				788C654F215CFDC700AF46A6 /* UITextView+LinkHelper.swift in Sources */,
 				788C6566215CFE0B00AF46A6 /* UIViewController+Helper.swift in Sources */,
+				A866BE4B24A9D063009E4012 /* UITextView+LinkPresentationHelper.swift in Sources */,
 				788C656A215CFE0B00AF46A6 /* CameraInputView.swift in Sources */,
 				788C6557215CFDC700AF46A6 /* ToolBarItem.swift in Sources */,
 				788C6552215CFDC700AF46A6 /* UITextView+ImageHelper.swift in Sources */,
 				788C6564215CFE0B00AF46A6 /* ImagePickerManager.swift in Sources */,
 				788C655B215CFDC700AF46A6 /* TextViewDelegate.swift in Sources */,
 				78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */,
+				A8CD9C3124B8E90C0037EDE7 /* UserDefaults+Helper.swift in Sources */,
 				78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */,
 				78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */,
 				788C6565215CFE0B00AF46A6 /* SHRichTextEditor.swift in Sources */,
@@ -598,7 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HP3Q6K3LF3;
+				DEVELOPMENT_TEAM = AMM55DP523;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = SHRichTextEditorTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -613,7 +625,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HP3Q6K3LF3;
+				DEVELOPMENT_TEAM = AMM55DP523;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				INFOPLIST_FILE = SHRichTextEditorTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
