@@ -195,19 +195,24 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
     private func handleLinkPreview() {
         textViewDelegate.registerShouldChangeText { (textView, range, text) -> (Bool) in
             if text == "\n" {
+                guard let validCursorPosition = textView.currentCursorPosition, validCursorPosition > 0 else { return true }
                 if let urlString = textView.currentWord, urlString.isValidURL {
                     if #available(iOS 13.0, *) {
-                        textView.inserLPView(for: urlString)
+                        textView.insertLPView(for: urlString)
                     }
+                } else {
+                    textView.updateTappedIndex(to: validCursorPosition-1)
                 }
-            } else if text == "" && range.length > 0 && textView.currentCursorPosition != nil, textView.currentCursorPosition! > 0 {
-                if textView.attributedText.imagePresent(at: textView.currentCursorPosition!-1) {
+            } else if text == "" && range.length > 0 {
+                guard let validCursorPosition = textView.currentCursorPosition, validCursorPosition > 0 else { return true }
+                if textView.attributedText.imagePresent(at: validCursorPosition-1) {
                     if let selectionView = self.textViewImageInputHandler.imageSelectionView {
                         if textView.subviews.contains(selectionView) {
                             textView.clearImageSelection(selectionView: selectionView)
                             return true
                         } else {
-                            textView.selectImage(at: textView.currentCursorPosition!-1, selectionView: selectionView)
+                            textView.updateTappedIndex(to: validCursorPosition-1)
+                            textView.selectImage(at: validCursorPosition-1, selectionView: selectionView)
                             return false
                         }
                     }

@@ -20,6 +20,7 @@ public class TextViewImageInputHandler: ImageInputHandler {
             guard let currentIndex = textView.currentTappedIndex else {
                 return
             }
+            
             let mutableAttributedString = NSMutableAttributedString(attributedString: textView.attributedText)
             mutableAttributedString.replaceCharacters(in: NSRange(location: currentIndex, length: 1), with: "")
             textView.attributedText = mutableAttributedString

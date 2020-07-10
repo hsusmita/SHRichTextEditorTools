@@ -2,7 +2,7 @@
 //  UITextView+LinkPresentationHelper.swift
 //  SHRichTextEditorTools
 //
-//  Created by D2k on 29/06/20.
+//  Created by Ajay Bhanushali on 29/06/20.
 //  Copyright © 2020 hsusmita. All rights reserved.
 //
 
@@ -12,8 +12,8 @@ import LinkPresentation
 extension UITextView {
 
     @available(iOS 13.0, *)
-    func inserLPView(for urlString: String) {
-        getPreviewImage(for: urlString) { [weak self] linkView in
+    func insertLPView(for urlString: String) {
+        getLPLinkView(for: urlString) { [weak self] linkView in
             guard let self = self else { return }
             
             self.superview?.insertSubview(linkView, belowSubview: self)
@@ -41,7 +41,7 @@ extension UITextView {
                 currentAtStr.append(attachmentAtStr)
             }
             
-            let regex = try! NSRegularExpression(pattern: "\\S+$")
+            guard let regex = try? NSRegularExpression(pattern: "\\S+$") else { return }
             let textRange = NSRange(location: 0, length: self.selectedRange.location)
             
             if let range = regex.firstMatch(in: self.text, range: textRange)?.range {
@@ -53,8 +53,7 @@ extension UITextView {
     }
     
     @available(iOS 13.0, *)
-    func getPreviewImage(for urlString: String, callBack: @escaping (LPLinkView)->Void) {
-        let metadataStorage = MetadataStorage()
+    func getLPLinkView(for urlString: String, callBack: @escaping (LPLinkView)->Void) {
         let metadataProvider = LPMetadataProvider()
         
         let linkView = LPLinkView(metadata: LPLinkMetadata())
@@ -62,7 +61,7 @@ extension UITextView {
                                      height: self.frame.size.height)
         
         if let url = URL(string: urlString) {
-            if let metadata = metadataStorage.metadata(for: url) {
+            if let metadata = UserDefaults.standard.metadata(for: url) {
                 linkView.metadata = metadata
                 callBack(linkView)
                 return
@@ -73,7 +72,7 @@ extension UITextView {
                 }
                 else if let metadata = metadata {
                     DispatchQueue.main.async {
-                        metadataStorage.store(metadata)
+                        UserDefaults.standard.store(metadata)
                         linkView.metadata = metadata
                         callBack(linkView)
                         return

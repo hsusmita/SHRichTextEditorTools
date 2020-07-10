@@ -1,25 +1,26 @@
 //
-//  MetadataStorage.swift
+//  UserDefaults+Helper.swift
 //  SHRichTextEditorTools
 //
-//  Created by D2k on 29/06/20.
+//  Created by Ajay Bhanushali on 10/07/20.
 //  Copyright © 2020 hsusmita. All rights reserved.
 //
 
 import LinkPresentation
 
 @available(iOS 13.0, *)
-struct MetadataStorage {
-    private let storage = UserDefaults.standard
-    
+extension UserDefaults {
     func store(_ metadata: LPLinkMetadata) {
+        let storage = UserDefaults.standard
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: metadata, requiringSecureCoding: true)
             var metadatas = storage.dictionary(forKey: "Metadata") as? [String: Data] ?? [String: Data]()
             while metadatas.count > 10 {
-                metadatas.removeValue(forKey: metadatas.randomElement()!.key)
+                guard let key = metadatas.randomElement()?.key else { return }
+                metadatas.removeValue(forKey: key)
             }
-            metadatas[metadata.originalURL!.absoluteString] = data
+            guard let absString = metadata.originalURL?.absoluteString else { return }
+            metadatas[absString] = data
             storage.set(metadatas, forKey: "Metadata")
         }
         catch {
@@ -28,6 +29,7 @@ struct MetadataStorage {
     }
     
     func metadata(for url: URL) -> LPLinkMetadata? {
+        let storage = UserDefaults.standard
         guard let metadatas = storage.dictionary(forKey: "Metadata") as? [String: Data] else { return nil }
         guard let data = metadatas[url.absoluteString] else { return nil }
         do {

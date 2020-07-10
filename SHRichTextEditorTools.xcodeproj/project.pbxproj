@@ -40,7 +40,7 @@
 		78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D616DA216B73D500440E71 /* LinkInputAlert.swift */; };
 		A866BE4B24A9D063009E4012 /* UITextView+LinkPresentationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */; };
 		A866BE4F24A9EC78009E4012 /* String+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866BE4E24A9EC78009E4012 /* String+Helper.swift */; };
-		A866BE5124AA5790009E4012 /* MetadataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A866BE5024AA5790009E4012 /* MetadataStorage.swift */; };
+		A8CD9C3124B8E90C0037EDE7 /* UserDefaults+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +100,7 @@
 		78D616DA216B73D500440E71 /* LinkInputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkInputAlert.swift; sourceTree = "<group>"; };
 		A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+LinkPresentationHelper.swift"; sourceTree = "<group>"; };
 		A866BE4E24A9EC78009E4012 /* String+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helper.swift"; sourceTree = "<group>"; };
-		A866BE5024AA5790009E4012 /* MetadataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataStorage.swift; sourceTree = "<group>"; };
+		A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +150,7 @@
 				788C6547215CFDC700AF46A6 /* NSAttributedString+Helper.swift */,
 				A866BE4A24A9D062009E4012 /* UITextView+LinkPresentationHelper.swift */,
 				A866BE4E24A9EC78009E4012 /* String+Helper.swift */,
+				A8CD9C3024B8E90C0037EDE7 /* UserDefaults+Helper.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -174,7 +175,6 @@
 				78D616D9216B6FDA00440E71 /* ImageInputHandler */,
 				788C655D215CFE0B00AF46A6 /* ImagePickerManager.swift */,
 				78D616DA216B73D500440E71 /* LinkInputAlert.swift */,
-				A866BE5024AA5790009E4012 /* MetadataStorage.swift */,
 			);
 			path = SHRichTextEditor;
 			sourceTree = "<group>";
@@ -433,10 +433,10 @@
 				788C6564215CFE0B00AF46A6 /* ImagePickerManager.swift in Sources */,
 				788C655B215CFDC700AF46A6 /* TextViewDelegate.swift in Sources */,
 				78B830361E5B0A32005B9057 /* AppDelegate.swift in Sources */,
+				A8CD9C3124B8E90C0037EDE7 /* UserDefaults+Helper.swift in Sources */,
 				78D616DB216B73D500440E71 /* LinkInputAlert.swift in Sources */,
 				78D616D8216B6F6E00440E71 /* TextViewImageInputHandler.swift in Sources */,
 				788C6565215CFE0B00AF46A6 /* SHRichTextEditor.swift in Sources */,
-				A866BE5124AA5790009E4012 /* MetadataStorage.swift in Sources */,
 				788C6559215CFDC700AF46A6 /* ToolBarButtonExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
