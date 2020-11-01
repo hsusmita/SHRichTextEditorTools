@@ -14,7 +14,7 @@ public class TextViewImageInputHandler: ImageInputHandler {
     private var imageBorderView = ImageBorderView.imageBorderView()
     private(set) public var cameraInputView =  CameraInputView.cameraInputView()
     
-    public init(textView: UITextView) {
+    public init(textView: UITextView, textViewDelegate: TextViewDelegate) {
         self.textView = textView
         self.imageBorderView.actionOnDeleteTap = {
             guard let currentIndex = textView.currentTappedIndex else {
@@ -23,6 +23,7 @@ public class TextViewImageInputHandler: ImageInputHandler {
             let mutableAttributedString = NSMutableAttributedString(attributedString: textView.attributedText)
             mutableAttributedString.replaceCharacters(in: NSRange(location: currentIndex, length: 1), with: "")
             textView.attributedText = mutableAttributedString
+            textViewDelegate.textViewDidDeleteImage(textView, index: currentIndex)
         }
     }
     

@@ -80,7 +80,7 @@ open class SHRichTextEditor: NSObject, RichTextEditor {
         self.textView = textView
         self.toolBarDefaultTintColor = defaultTintColor
         self.toolBarSelectedTintColor = selectedTintColor
-        self.textViewImageInputHandler = TextViewImageInputHandler(textView: self.textView)
+        self.textViewImageInputHandler = TextViewImageInputHandler(textView: self.textView, textViewDelegate: self.textViewDelegate)
         self.defaultLinkInputHandler = LinkInputAlert()
         super.init()
     }

@@ -9,27 +9,27 @@
 import UIKit
 
 class ImageBorderView: UIView {
-	@IBOutlet var deleteButton: UIButton!
-	var actionOnDeleteTap: (() -> ())?
+    @IBOutlet var deleteButton: UIButton!
+    var actionOnDeleteTap: (() -> ())?
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		self.setBorder()
-	}
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setBorder()
+    }
 
-	static func imageBorderView() -> ImageBorderView {
-		let nib = UINib(nibName: String(describing: ImageBorderView.self), bundle: Bundle(for: self.classForCoder()))
-		return nib.instantiate(withOwner: self, options: nil).first as! ImageBorderView
-	}
+    static func imageBorderView() -> ImageBorderView {
+        let nib = UINib(nibName: String(describing: ImageBorderView.self), bundle: Bundle(for: self.classForCoder()))
+        return nib.instantiate(withOwner: self, options: nil).first as! ImageBorderView
+    }
 
-	private func setBorder() {
-		self.layer.borderColor = self.tintColor.cgColor
-		self.layer.borderWidth = 4.0
-		self.deleteButton.backgroundColor = self.tintColor
-	}
+    private func setBorder() {
+        self.layer.borderColor = self.tintColor.cgColor
+        self.layer.borderWidth = 4.0
+        self.deleteButton.backgroundColor = self.tintColor
+    }
 
-	@IBAction private func didTapDeleteButton(_ sender: Any) {
-		self.removeFromSuperview()
-		self.actionOnDeleteTap?()
-	}
+    @IBAction private func didTapDeleteButton(_ sender: Any) {
+        self.removeFromSuperview()
+        self.actionOnDeleteTap?()
+    }
 }
