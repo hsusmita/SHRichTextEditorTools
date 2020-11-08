@@ -21,6 +21,7 @@ public extension UITextView {
                         return
                 }
                 self.toggleItalics(self)
+                textViewDelegate.textViewDidApplyTextFormatting(self)
             },
             actionOnSelection: actionOnSelection
         )

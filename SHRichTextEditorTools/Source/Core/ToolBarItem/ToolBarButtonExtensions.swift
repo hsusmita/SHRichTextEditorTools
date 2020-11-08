@@ -19,6 +19,7 @@ public extension ToolBarButton {
             type: type,
             actionOnTap: { item in
                 textView.toggleBoldface(textView)
+                textViewDelegate.textViewDidApplyTextFormatting(textView)
         },
             actionOnSelection: actionOnSelection
         )
@@ -35,6 +36,7 @@ public extension ToolBarButton {
             if text == "\n" {
                 if let index = textView.currentCursorPosition, index - 1 >= 0, textView.isCharacterBold(for: index - 1) {
                     textView.toggleBoldface(textView)
+                    textViewDelegate.textViewDidApplyTextFormatting(textView)
                     toolBarButton.isSelected = false
                 }
             }
@@ -70,6 +72,7 @@ public extension ToolBarButton {
             type: type,
             actionOnTap: { item in
                 textView.toggleItalics(textView)
+                textViewDelegate.textViewDidApplyTextFormatting(textView)
         },
             actionOnSelection: actionOnSelection
         )
@@ -86,6 +89,7 @@ public extension ToolBarButton {
             if text == "\n" {
                 if let index = textView.currentCursorPosition, index - 1 >= 0, textView.isCharacterItalic(for: index - 1) {
                     textView.toggleItalics(textView)
+                    textViewDelegate.textViewDidApplyTextFormatting(textView)
                     toolBarButton.isSelected = false
                 }
             }
@@ -170,11 +174,11 @@ public extension ToolBarButton {
                 if let url = url {
                     if UIApplication.shared.canOpenURL(url) {
                         textView.addLink(link: url, for: range, linkAttributes: linkInputHandler.linkAttributes)
+                        textViewDelegate.textViewDidApplyTextFormatting(textView)
                         if let newPosition = textView.position(from: textView.beginningOfDocument,
                                                                offset: range.location + range.length) {
                             textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
                         }
-
                     }
                 }
             }

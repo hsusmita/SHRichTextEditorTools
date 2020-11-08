@@ -24,6 +24,7 @@ open class TextViewDelegate: NSObject {
         case textViewShouldInteractWithTextAttachment
         case textViewDidInsertImage
         case textViewDidDeleteImage
+        case textViewDidApplyTextFormatting
     }
     
     fileprivate var actionsForEvents: [Event: [Any]] = [:]
@@ -87,6 +88,10 @@ open class TextViewDelegate: NSObject {
     
     open func registerDidDeleteImage(with handler: @escaping (UITextView, Int) -> ()) {
         self.register(event: .textViewDidDeleteImage, handler: handler)
+    }
+    
+    open func registerDidApplyTextFormatting(with handler: @escaping (UITextView, Int) -> ()) {
+        self.register(event: .textViewDidApplyTextFormatting, handler: handler)
     }
     
     private func register(event: Event, handler: Any) {
@@ -206,6 +211,16 @@ extension TextViewDelegate: UITextViewDelegate {
         }
         for action in actionsForDidDeleteImage {
             action(textView, index)
+        }
+    }
+    
+    public func textViewDidApplyTextFormatting(_ textView: UITextView) {
+        guard let actionsForDidApplyTextFormatting: [(UITextView) -> (Void)] =
+            self.actionsForEvents[.textViewDidApplyTextFormatting] as? [(UITextView) -> (Void)] else {
+                return
+        }
+        for action in actionsForDidApplyTextFormatting {
+            action(textView)
         }
     }
     
