@@ -90,7 +90,7 @@ open class TextViewDelegate: NSObject {
         self.register(event: .textViewDidDeleteImage, handler: handler)
     }
     
-    open func registerDidApplyTextFormatting(with handler: @escaping (UITextView, Int) -> ()) {
+    open func registerDidApplyTextFormatting(with handler: @escaping (UITextView) -> ()) {
         self.register(event: .textViewDidApplyTextFormatting, handler: handler)
     }
     
