@@ -22,7 +22,7 @@ public extension UITextView {
             return
         }
         let finalAttributedString = NSMutableAttributedString(attributedString: attributedStringWithImage)
-        finalAttributedString.addAttributes(self.typingAttributes, range: NSRange(location: 0, length: finalAttributedString.length))
+        finalAttributedString.addAttributes(self.typingAttributes, range: NSRange(location: index, length: 1))
         self.attributedText = finalAttributedString
     }
     
