@@ -174,11 +174,12 @@ public extension ToolBarButton {
                 if let url = url {
                     if UIApplication.shared.canOpenURL(url) {
                         textView.addLink(link: url, for: range, linkAttributes: linkInputHandler.linkAttributes)
-                        textViewDelegate.textViewDidApplyTextFormatting(textView)
-                        if let newPosition = textView.position(from: textView.beginningOfDocument,
+                        if let startPosition = textView.position(from: textView.beginningOfDocument, offset: range.location),
+                           let endPosition = textView.position(from: textView.beginningOfDocument,
                                                                offset: range.location + range.length) {
-                            textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
+                            textView.selectedTextRange = textView.textRange(from: startPosition, to: endPosition)
                         }
+                        textViewDelegate.textViewDidApplyTextFormatting(textView)
                     }
                 }
             }
