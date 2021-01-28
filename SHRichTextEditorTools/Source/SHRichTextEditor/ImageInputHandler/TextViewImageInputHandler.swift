@@ -21,7 +21,9 @@ public class TextViewImageInputHandler: ImageInputHandler {
                 return
             }
             let mutableAttributedString = NSMutableAttributedString(attributedString: textView.attributedText)
-            mutableAttributedString.replaceCharacters(in: NSRange(location: currentIndex, length: 1), with: "")
+            if (mutableAttributedString.length >= currentIndex + 1) {
+                mutableAttributedString.replaceCharacters(in: NSRange(location: currentIndex, length: 1), with: "")
+            }
             textView.attributedText = mutableAttributedString
             textViewDelegate.textViewDidDeleteImage(textView, index: currentIndex)
         }
